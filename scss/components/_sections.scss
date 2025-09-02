@@ -410,10 +410,14 @@
   grid-template-columns: 1fr;
   gap: $spacing-12;
   
-  @include respond-to('desktop') {
+  @include respond-to('tablet') {
     grid-template-columns: 1fr 1fr;
-    gap: $spacing-20;
+    gap: $spacing-16;
     align-items: start;
+  }
+  
+  @include respond-to('desktop') {
+    gap: $spacing-20;
   }
 }
 

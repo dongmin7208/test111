@@ -712,67 +712,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalController = new ModalController();
     
     // ============================================================================
-    // コンタクトフォーム処理（ハングル文字化け対策）
+    // 기본 메일 폼 처리 (mailto 방식)
     // ============================================================================
-    
-    class ContactFormHandler {
-        constructor() {
-            this.form = document.getElementById('contact-form');
-            this.init();
-        }
-        
-        init() {
-            if (this.form) {
-                this.form.addEventListener('submit', this.handleSubmit.bind(this));
-            }
-        }
-        
-        handleSubmit(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this.form);
-            const name = formData.get('name') || '';
-            const email = formData.get('email') || '';
-            const subject = formData.get('subject') || '포트폴리오 문의';
-            const message = formData.get('message') || '';
-            
-            // ハングル文字化け防止のためURL エンコーディング処理
-            const encodedSubject = encodeURIComponent(`[포트폴리오 문의] ${subject}`);
-            const encodedBody = encodeURIComponent(
-                `이름: ${name}\n` +
-                `이메일: ${email}\n` +
-                `제목: ${subject}\n\n` +
-                `메시지:\n${message}\n\n` +
-                `---\n` +
-                `포트폴리오에서 전송된 메일입니다.`
-            );
-            
-            const mailtoUrl = `mailto:fig7261@naver.com?subject=${encodedSubject}&body=${encodedBody}`;
-            
-            // メールクライアント起動
-            window.location.href = mailtoUrl;
-            
-            // フォーム送信完了メッセージ
-            this.showSuccessMessage();
-        }
-        
-        showSuccessMessage() {
-            const submitBtn = this.form.querySelector('.contact__form-submit');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '메일 클라이언트 실행 완료! ✓';
-            submitBtn.style.background = '#10b981';
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-                this.form.reset();
-            }, 3000);
-        }
-    }
-    
-    // コンタクトフォームハンドラー初期化
-    const contactFormHandler = new ContactFormHandler();
     
     // Reduced motionを優先するユーザーの場合、アニメーションを無効化
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
