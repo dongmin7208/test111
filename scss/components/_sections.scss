@@ -12,28 +12,46 @@
 
 .about__container {
   @include container(1200px);
-  @include flex-center;
+  display: flex;
   flex-direction: column;
+  align-items: center;
   gap: $spacing-12;
+  text-align: center;
   
   @include respond-to('tablet') {
+    display: flex;
     flex-direction: row;
+    gap: 0;
     text-align: left;
-    gap: $spacing-16;
     align-items: flex-start;
+    justify-content: space-between;
   }
   
   @include respond-to('desktop') {
-    gap: $spacing-20;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
   }
 }
 
 .about__profile {
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  width: 100%;
   
   @include respond-to('tablet') {
-    flex: 0 0 300px;
+    flex: 0 0 40%;
+    width: 40%;
+    padding-right: $spacing-8;
+  }
+  
+  @include respond-to('desktop') {
+    flex: 0 0 35%;
+    width: 35%;
+    padding-right: $spacing-10;
   }
 }
 
@@ -45,6 +63,9 @@
   overflow: hidden;
   border: 4px solid $neutral-0;
   box-shadow: $shadow-lg;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   @include respond-to('tablet') {
     width: 250px;
@@ -52,10 +73,82 @@
     margin-bottom: $spacing-8;
   }
   
+  // 배경 글로우 효과
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, $primary-500, $secondary-500, $primary-500);
+    border-radius: $border-radius-full;
+    z-index: -1;
+    opacity: 0;
+    animation: rotate-bg 3s linear infinite;
+    transition: opacity 0.4s ease;
+  }
+  
+  // 오버레이 효과
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($primary-600, 0.15), rgba($secondary-600, 0.15));
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 2;
+    mix-blend-mode: soft-light;
+  }
+  
+  &:hover {
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.25),
+      0 0 0 8px rgba($primary-500, 0.1),
+      0 0 50px rgba($primary-500, 0.3);
+    border-color: $primary-400;
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    &::after {
+      opacity: 1;
+      background: linear-gradient(135deg, rgba($primary-500, 0.2), rgba($secondary-500, 0.2));
+    }
+    
+    img {
+      transform: scale(1.15) rotate(-3deg);
+      filter: brightness(1.05) saturate(1.1) contrast(1.05);
+    }
+  }
+  
+  &:active {
+    transform: scale(1.05) rotate(3deg);
+    transition: transform 0.2s ease;
+  }
+  
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(1) saturate(1) contrast(1);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes rotate-bg {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -85,10 +178,18 @@
 }
 
 .about__content {
-  flex: 1;
+  width: 100%;
   
   @include respond-to('tablet') {
-    text-align: left;
+    flex: 0 0 60%;
+    width: 60%;
+    padding-left: $spacing-8;
+  }
+  
+  @include respond-to('desktop') {
+    flex: 0 0 65%;
+    width: 65%;
+    padding-left: $spacing-10;
   }
 }
 
@@ -108,36 +209,117 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: $spacing-4;
-  margin-bottom: $spacing-6;
+  margin-bottom: $spacing-8;
+  width: 100%;
+  
+  @include respond-to('mobile-l') {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-5;
+  }
   
   @include respond-to('tablet') {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+    margin-bottom: $spacing-10;
+  }
+  
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-5;
+  }
+  
+  @include respond-to('desktop-l') {
+    grid-template-columns: repeat(3, 1fr);
     gap: $spacing-6;
-    margin-bottom: $spacing-8;
   }
 }
 
 .about__detail-item {
   display: flex;
   align-items: center;
-  gap: $spacing-3;
+  gap: $spacing-4;
+  padding: $spacing-4 $spacing-5;
+  background: linear-gradient(135deg, rgba($primary-50, 0.8), rgba($neutral-50, 0.6));
+  border-radius: $border-radius-lg;
+  border-left: 4px solid $primary-500;
   font-size: $font-size-sm;
   color: $neutral-600;
+  transition: all $transition-base;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 60px;
   
   @include respond-to('tablet') {
+    padding: $spacing-4 $spacing-5;
+    gap: $spacing-4;
+    min-height: 65px;
     font-size: $font-size-base;
   }
   
+  @include respond-to('desktop') {
+    min-height: 70px;
+    padding: $spacing-5 $spacing-6;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-left-color: $secondary-500;
+  }
+  
   .about__detail-icon {
-    width: 20px;
-    height: 20px;
-    color: $primary-500;
+    width: 24px;
+    height: 24px;
+    color: $primary-600;
     flex-shrink: 0;
+    background: rgba($primary-500, 0.1);
+    border-radius: $border-radius-full;
+    padding: $spacing-1;
+    
+    @include respond-to('tablet') {
+      width: 28px;
+      height: 28px;
+      padding: $spacing-2;
+    }
+  }
+  
+  .about__detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
   }
   
   .about__detail-label {
+    font-weight: $font-weight-semibold;
+    color: $neutral-800;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .about__detail-value {
     font-weight: $font-weight-medium;
     color: $neutral-700;
+    font-size: $font-size-base;
+    
+    @include respond-to('tablet') {
+      font-size: $font-size-lg;
+    }
+    
+    a {
+      color: $primary-600;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      transition: all $transition-base;
+      
+      &:hover {
+        color: $primary-700;
+        text-decoration: underline;
+      }
+      
+      &:focus {
+        @include focus-ring();
+      }
+    }
   }
 }
 
@@ -201,97 +383,102 @@
 // ============================================================================
 
 .contact {
-  background: linear-gradient(135deg, $primary-600, $secondary-600);
-  color: $neutral-0;
+  background: linear-gradient(135deg, rgba($neutral-50, 0.8), rgba($primary-50, 0.3));
+  position: relative;
+  overflow: hidden;
 }
 
 .contact__container {
-  @include container(800px);
+  @include container(1200px);
   text-align: center;
 }
 
 .contact .section-title {
-  color: $neutral-0;
-  background: none;
-  -webkit-text-fill-color: initial;
+  margin-bottom: $spacing-4;
 }
 
 .contact .section-subtitle {
-  color: $neutral-200;
-  margin-bottom: $spacing-12;
+  margin-bottom: $spacing-16;
   
   @include respond-to('tablet') {
-    margin-bottom: $spacing-16;
+    margin-bottom: $spacing-20;
+  }
+}
+
+.contact__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-12;
+  
+  @include respond-to('desktop') {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-20;
+    align-items: start;
   }
 }
 
 .contact__info {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: $spacing-8;
-  margin-bottom: $spacing-12;
+}
+
+.contact__info-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin-bottom: $spacing-8;
+  text-align: left;
   
   @include respond-to('tablet') {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-12;
-    margin-bottom: $spacing-16;
+    font-size: $font-size-3xl;
   }
 }
 
 .contact__item {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: $spacing-4;
   padding: $spacing-6;
-  background: rgba($neutral-0, 0.1);
-  border-radius: $border-radius-xl;
-  border: 1px solid rgba($neutral-0, 0.2);
+  background: $neutral-0;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  border-left: 4px solid $primary-500;
   transition: all $transition-base;
   
-  @include respond-to('tablet') {
-    padding: $spacing-8;
-  }
-  
   &:hover {
-    background: rgba($neutral-0, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: $shadow-xl;
+    border-left-color: $secondary-500;
   }
 }
 
 .contact__icon {
-  width: 48px;
-  height: 48px;
-  color: $neutral-0;
-  opacity: 0.9;
-  
-  @include respond-to('tablet') {
-    width: 56px;
-    height: 56px;
-  }
+  font-size: $font-size-2xl;
+  color: $primary-600;
+  flex-shrink: 0;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+  text-align: left;
+  flex-grow: 1;
 }
 
 .contact__label {
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $neutral-200;
+  font-weight: $font-weight-semibold;
+  color: $neutral-500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  
-  @include respond-to('tablet') {
-    font-size: $font-size-base;
-  }
 }
 
 .contact__value {
   font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $neutral-0;
-  
-  @include respond-to('tablet') {
-    font-size: $font-size-xl;
-  }
+  font-weight: $font-weight-medium;
+  color: $neutral-900;
   
   a {
     color: inherit;
@@ -299,31 +486,116 @@
     transition: all $transition-base;
     
     &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
+      color: $primary-600;
     }
     
     &:focus {
-      outline: 2px solid rgba($neutral-0, 0.5);
-      outline-offset: 2px;
-      border-radius: $border-radius-sm;
+      @include focus-ring();
     }
   }
 }
 
-.contact__cta {
-  text-align: center;
-}
-
-.contact__cta-text {
-  font-size: $font-size-lg;
-  color: $neutral-100;
-  margin-bottom: $spacing-6;
+// 폼 스타일
+.contact__form {
+  background: $neutral-0;
+  padding: $spacing-8;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-lg;
+  border: 1px solid $neutral-200;
   
   @include respond-to('tablet') {
-    font-size: $font-size-xl;
+    padding: $spacing-10;
+  }
+}
+
+.contact__form-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin-bottom: $spacing-8;
+  text-align: left;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.contact__form-group {
+  margin-bottom: $spacing-6;
+  
+  &:last-of-type {
     margin-bottom: $spacing-8;
+  }
+}
+
+.contact__form-label {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $neutral-700;
+  margin-bottom: $spacing-2;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+  }
+}
+
+.contact__form-input,
+.contact__form-textarea {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  border: 2px solid $neutral-300;
+  border-radius: $border-radius-md;
+  font-family: inherit;
+  font-size: $font-size-base;
+  color: $neutral-900;
+  background-color: $neutral-0;
+  transition: all $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-500;
+    box-shadow: 0 0 0 3px rgba($primary-500, 0.1);
+  }
+  
+  // 사용자가 입력을 시작한 후에만 유효성 검사 스타일 적용
+  &:invalid:not(:placeholder-shown) {
+    border-color: $error;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($error, 0.1);
+    }
+  }
+  
+  // 또는 사용자가 포커스를 잃은 후에만 적용
+  &:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: $error;
+  }
+  
+  &::placeholder {
+    color: $neutral-500;
+  }
+}
+
+.contact__form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact__form-error {
+  display: block;
+  font-size: $font-size-sm;
+  color: $error;
+  margin-top: $spacing-1;
+  min-height: 1.2em;
+}
+
+.contact__form-submit {
+  width: 100%;
+  
+  @include respond-to('tablet') {
+    width: auto;
+    min-width: 200px;
   }
 }
 
@@ -487,9 +759,51 @@
   padding: $spacing-6;
   box-shadow: $shadow-md;
   border: 1px solid $neutral-200;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
   
   @include respond-to('tablet') {
     padding: $spacing-8;
+  }
+  
+  // 호버 시 글로우 효과
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($primary-400, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+  }
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+      $shadow-xl,
+      0 0 30px rgba($primary-500, 0.15);
+    border-color: $primary-300;
+    
+    &::before {
+      left: 100%;
+    }
+    
+    .qna__question {
+      color: $primary-600;
+      transform: translateX(5px);
+      
+      &::before {
+        transform: scale(1.2) rotate(15deg);
+      }
+    }
+    
+    .qna__answer p {
+      color: $neutral-800;
+    }
   }
 }
 
@@ -498,6 +812,9 @@
   font-weight: $font-weight-bold;
   color: $primary-700;
   margin-bottom: $spacing-4;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
   
   @include respond-to('tablet') {
     font-size: $font-size-xl;
@@ -507,15 +824,21 @@
   &::before {
     content: '💭';
     margin-right: $spacing-2;
+    display: inline-block;
+    transition: all 0.3s ease;
   }
 }
 
 .qna__answer {
+  position: relative;
+  z-index: 2;
+  
   p {
     color: $neutral-700;
     font-size: $font-size-base;
     line-height: $line-height-relaxed;
     margin-bottom: $spacing-4;
+    transition: all 0.3s ease;
     
     @include respond-to('tablet') {
       font-size: $font-size-lg;
@@ -546,9 +869,25 @@
   }
   
   .about__detail-item {
-    color: $neutral-400;
+    background: linear-gradient(135deg, rgba($neutral-800, 0.6), rgba($neutral-700, 0.4));
+    border-left-color: $primary-400;
+    color: $neutral-300;
+    
+    &:hover {
+      background: linear-gradient(135deg, rgba($neutral-700, 0.8), rgba($neutral-600, 0.6));
+      border-left-color: $secondary-400;
+    }
+    
+    .about__detail-icon {
+      color: $primary-400;
+      background: rgba($primary-400, 0.2);
+    }
     
     .about__detail-label {
+      color: $neutral-400;
+    }
+    
+    .about__detail-value {
       color: $neutral-200;
     }
   }
@@ -608,5 +947,80 @@
   
   .qna__answer p {
     color: $neutral-300;
+  }
+  
+  // Contact
+  .contact {
+    background: linear-gradient(135deg, rgba($neutral-900, 0.8), rgba($neutral-800, 0.9));
+  }
+  
+  .contact__info-title {
+    color: $neutral-0;
+  }
+  
+  .contact__item {
+    background: $neutral-800;
+    border-left-color: $primary-400;
+    
+    &:hover {
+      border-left-color: $secondary-400;
+    }
+  }
+  
+  .contact__icon {
+    color: $primary-400;
+  }
+  
+  .contact__label {
+    color: $neutral-400;
+  }
+  
+  .contact__value {
+    color: $neutral-200;
+    
+    a:hover {
+      color: $primary-400;
+    }
+  }
+  
+  .contact__form {
+    background: $neutral-800;
+    border-color: $neutral-700;
+  }
+  
+  .contact__form-title {
+    color: $neutral-0;
+  }
+  
+  .contact__form-label {
+    color: $neutral-300;
+  }
+  
+  .contact__form-input,
+  .contact__form-textarea {
+    background-color: $neutral-900;
+    border-color: $neutral-700;
+    color: $neutral-200;
+    
+    &:focus {
+      border-color: $primary-400;
+      box-shadow: 0 0 0 3px rgba($primary-400, 0.1);
+    }
+    
+    &:invalid:not(:placeholder-shown) {
+      border-color: $error;
+      
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($error, 0.1);
+      }
+    }
+    
+    &:invalid:not(:focus):not(:placeholder-shown) {
+      border-color: $error;
+    }
+    
+    &::placeholder {
+      color: $neutral-500;
+    }
   }
 }

@@ -85,33 +85,62 @@
 
 .scroll-indicator__icon {
   @include flex-center;
-  flex-direction: column;
-  gap: $spacing-1;
-  padding: $spacing-3;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: $border-radius-full;
-  box-shadow: $shadow-lg;
+  padding: $spacing-2;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-lg;
   backdrop-filter: blur(10px);
   transition: all $transition-base;
   
   &:hover {
-    transform: scale(1.1);
-    box-shadow: $shadow-xl;
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
   }
 }
 
-.scroll-indicator__text {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  color: $neutral-600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.scroll-indicator__mouse {
+  width: 28px;
+  height: 44px;
+  border: 2px solid $primary-600;
+  border-radius: 14px;
+  position: relative;
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: $primary-700;
+    transform: scale(1.02);
+  }
 }
 
-.scroll-indicator__arrow {
-  font-size: $font-size-lg;
-  color: $primary-600;
-  animation: bounce 2s infinite;
+.scroll-indicator__wheel {
+  width: 3px;
+  height: 6px;
+  background: $primary-600;
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 2s ease-in-out infinite;
+  transition: background-color $transition-base;
+  
+  .scroll-indicator__mouse:hover & {
+    background: $primary-700;
+  }
+}
+
+@keyframes scroll-wheel {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(12px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes bounce {

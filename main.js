@@ -255,7 +255,114 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         initScrollAnimations() {
-            // フェードインアニメーション
+            // About Meセクションのアニメーション
+            gsap.utils.toArray('.about__profile, .about__content').forEach(element => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        y: 60
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // About Me詳細項目のアニメーション
+            gsap.utils.toArray('.about__detail-item').forEach((item, index) => {
+                gsap.fromTo(item, 
+                    {
+                        opacity: 0,
+                        x: -30
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        delay: index * 0.1,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // 経歴・資格証セクションのアニメーション
+            gsap.utils.toArray('.about__experience').forEach(section => {
+                gsap.fromTo(section, 
+                    {
+                        opacity: 0,
+                        y: 50
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // 経歴・資格証リスト項目のアニメーション
+            gsap.utils.toArray('.about__list-item').forEach((item, index) => {
+                gsap.fromTo(item, 
+                    {
+                        opacity: 0,
+                        x: -20
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        delay: index * 0.08,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // サブセクションタイトルのアニメーション
+            gsap.utils.toArray('.about__subsection-title').forEach(title => {
+                gsap.fromTo(title, 
+                    {
+                        opacity: 0,
+                        scale: 0.9
+                    },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: title,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // スキルカードとプロジェクトカードのアニメーション
             gsap.utils.toArray('.skill-card, .project-card').forEach(element => {
                 gsap.fromTo(element, 
                     {
@@ -269,6 +376,92 @@ document.addEventListener('DOMContentLoaded', () => {
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: element,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // Contactセクションのアニメーション
+            gsap.utils.toArray('.contact__info, .contact__form').forEach(element => {
+                gsap.fromTo(element, 
+                    {
+                        opacity: 0,
+                        y: 60
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // Contact項目のアニメーション
+            gsap.utils.toArray('.contact__item').forEach((item, index) => {
+                gsap.fromTo(item, 
+                    {
+                        opacity: 0,
+                        x: -30
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        delay: index * 0.1,
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // Contactフォーム要素のアニメーション
+            gsap.utils.toArray('.contact__form-group').forEach((group, index) => {
+                gsap.fromTo(group, 
+                    {
+                        opacity: 0,
+                        y: 20
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        delay: index * 0.08,
+                        scrollTrigger: {
+                            trigger: group,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+            
+            // Contactフォーム送信ボタンのアニメーション
+            gsap.utils.toArray('.contact__form-submit').forEach(button => {
+                gsap.fromTo(button, 
+                    {
+                        opacity: 0,
+                        scale: 0.9
+                    },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: {
+                            trigger: button,
                             start: "top 85%",
                             toggleActions: "play none none reverse"
                         }

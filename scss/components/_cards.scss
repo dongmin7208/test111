@@ -197,7 +197,7 @@
     font-size: $font-size-sm;
     font-weight: $font-weight-semibold;
     color: $neutral-700;
-    margin-bottom: $spacing-2;
+    margin-bottom: $spacing-3;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -212,17 +212,88 @@
   }
   
   li {
-    padding: $spacing-1 $spacing-2;
-    background-color: $neutral-100;
-    color: $neutral-700;
+    padding: $spacing-2 $spacing-3;
+    background: linear-gradient(135deg, $primary-100, $primary-50);
+    color: $primary-800;
     font-size: $font-size-xs;
-    font-weight: $font-weight-medium;
-    border-radius: $border-radius-sm;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-full;
+    border: 1px solid rgba($primary-300, 0.3);
     margin: 0;
+    transition: all $transition-fast;
+    position: relative;
+    overflow: hidden;
     
     @include respond-to('tablet') {
-      padding: $spacing-2 $spacing-3;
+      padding: $spacing-2 $spacing-4;
       font-size: $font-size-sm;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba($primary-500, 0.3);
+      background: linear-gradient(135deg, $primary-200, $primary-100);
+      border-color: $primary-400;
+      
+      &::before {
+        left: 100%;
+      }
+    }
+    
+    // 기술별 색상 구분
+    &:nth-child(4n+1) {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      color: #1565c0;
+      border-color: rgba(21, 101, 192, 0.2);
+      
+      &:hover {
+        background: linear-gradient(135deg, #bbdefb, #90caf9);
+        box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+      }
+    }
+    
+    &:nth-child(4n+2) {
+      background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+      color: #7b1fa2;
+      border-color: rgba(123, 31, 162, 0.2);
+      
+      &:hover {
+        background: linear-gradient(135deg, #e1bee7, #ce93d8);
+        box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+      }
+    }
+    
+    &:nth-child(4n+3) {
+      background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+      color: #2e7d32;
+      border-color: rgba(46, 125, 50, 0.2);
+      
+      &:hover {
+        background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+      }
+    }
+    
+    &:nth-child(4n+4) {
+      background: linear-gradient(135deg, #fff3e0, #ffcc02);
+      color: #ef6c00;
+      border-color: rgba(239, 108, 0, 0.2);
+      
+      &:hover {
+        background: linear-gradient(135deg, #ffcc02, #ffb74d);
+        box-shadow: 0 4px 12px rgba(239, 108, 0, 0.3);
+      }
     }
   }
 }
@@ -285,8 +356,50 @@
     }
     
     li {
-      background-color: $neutral-700;
-      color: $neutral-200;
+      // 다크모드에서 기술별 색상 구분
+      &:nth-child(4n+1) {
+        background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.1));
+        color: #90caf9;
+        border-color: rgba(144, 202, 249, 0.3);
+        
+        &:hover {
+          background: linear-gradient(135deg, rgba(33, 150, 243, 0.3), rgba(33, 150, 243, 0.2));
+          box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+        }
+      }
+      
+      &:nth-child(4n+2) {
+        background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
+        color: #ce93d8;
+        border-color: rgba(206, 147, 216, 0.3);
+        
+        &:hover {
+          background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
+          box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4);
+        }
+      }
+      
+      &:nth-child(4n+3) {
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+        color: #a5d6a7;
+        border-color: rgba(165, 214, 167, 0.3);
+        
+        &:hover {
+          background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(76, 175, 80, 0.2));
+          box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+      }
+      
+      &:nth-child(4n+4) {
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1));
+        color: #ffcc02;
+        border-color: rgba(255, 204, 2, 0.3);
+        
+        &:hover {
+          background: linear-gradient(135deg, rgba(255, 152, 0, 0.3), rgba(255, 152, 0, 0.2));
+          box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+        }
+      }
     }
   }
 }

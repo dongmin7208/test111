@@ -153,10 +153,10 @@ ul, ol {
     margin-bottom: $spacing-2;
     color: $neutral-700;
     line-height: $line-height-relaxed;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
+  }
+  
+  li:last-child {
+    margin-bottom: 0;
   }
 }
 
