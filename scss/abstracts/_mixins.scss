@@ -1,0 +1,376 @@
+// ============================================================================
+// Mixins - 재사용 가능한 스타일 믹스인
+// ============================================================================
+
+// 반응형 미디어 쿼리 믹스인
+// ============================================================================
+
+// 특정 브레이크포인트 이상에서 적용
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "브레이크포인트 '#{$breakpoint}'가 존재하지 않습니다.";
+  }
+}
+
+// 특정 브레이크포인트 미만에서 적용
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+      @content;
+    }
+  } @else {
+    @warn "브레이크포인트 '#{$breakpoint}'가 존재하지 않습니다.";
+  }
+}
+
+// 특정 범위 내에서만 적용
+@mixin respond-between($min, $max) {
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    @media screen and (min-width: map-get($breakpoints, $min)) and (max-width: map-get($breakpoints, $max) - 1px) {
+      @content;
+    }
+  } @else {
+    @warn "브레이크포인트가 존재하지 않습니다.";
+  }
+}
+
+// 타이포그래피 믹스인
+// ============================================================================
+
+// 반응형 폰트 크기
+@mixin fluid-font($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: $min-size;
+  
+  @media screen and (min-width: $min-width) and (max-width: $max-width) {
+    font-size: calc(#{$min-size} + (#{$max-size} - #{$min-size}) * (100vw - #{$min-width}) / (#{$max-width} - #{$min-width}));
+  }
+  
+  @media screen and (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+// 텍스트 말줄임 처리
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    // 한 줄 말줄임
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    // 여러 줄 말줄임
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// 버튼 스타일 믹스인
+// ============================================================================
+
+// 기본 버튼 스타일
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  user-select: none;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// 버튼 크기 변형
+@mixin button-size($size: 'md') {
+  @if $size == 'sm' {
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+    min-height: 2rem;
+  } @else if $size == 'md' {
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-base;
+    min-height: 2.5rem;
+  } @else if $size == 'lg' {
+    padding: $spacing-4 $spacing-6;
+    font-size: $font-size-lg;
+    min-height: 3rem;
+  }
+}
+
+// 버튼 색상 변형
+@mixin button-variant($bg-color, $text-color, $hover-bg: null, $hover-text: null) {
+  background-color: $bg-color;
+  color: $text-color;
+  
+  @if $hover-bg {
+    &:hover:not(:disabled) {
+      background-color: $hover-bg;
+      @if $hover-text {
+        color: $hover-text;
+      }
+    }
+  }
+}
+
+// 카드 컴포넌트 믹스인
+// ============================================================================
+
+// 기본 카드 스타일
+@mixin card-base {
+  background: $neutral-0;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-base;
+  transition: all $transition-base;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+// 카드 패딩 변형
+@mixin card-padding($size: 'md') {
+  @if $size == 'sm' {
+    padding: $spacing-4;
+  } @else if $size == 'md' {
+    padding: $spacing-6;
+  } @else if $size == 'lg' {
+    padding: $spacing-8;
+  }
+}
+
+// 레이아웃 믹스인
+// ============================================================================
+
+// 컨테이너 스타일
+@mixin container($max-width: 1200px) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+  
+  @include respond-to('tablet') {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
+  
+  @include respond-to('laptop') {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}
+
+// Flexbox 유틸리티
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Grid 레이아웃
+@mixin grid-auto-fit($min-width: 280px, $gap: $spacing-6) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// 절대 위치 중앙 정렬
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 전체 화면 덮개
+@mixin full-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// 이미지 최적화 믹스인
+// ============================================================================
+
+// 반응형 이미지
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 이미지 비율 유지
+@mixin aspect-ratio($width: 16, $height: 9) {
+  position: relative;
+  width: 100%;
+  
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: percentage($height / $width);
+  }
+  
+  > * {
+    @include absolute-center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// 접근성 믹스인
+// ============================================================================
+
+// 스크린 리더 전용 텍스트
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// 포커스 가능한 요소 스타일
+@mixin focus-ring($color: rgba(59, 130, 246, 0.3)) {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px $color;
+  }
+}
+
+// 애니메이션 믹스인
+// ============================================================================
+
+// 페이드 인 애니메이션
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  opacity: 0;
+  animation: fade-in $duration ease-out $delay forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+// 슬라이드 업 애니메이션
+@mixin slide-up($duration: 0.5s, $delay: 0s, $distance: 30px) {
+  opacity: 0;
+  transform: translateY($distance);
+  animation: slide-up $duration ease-out $delay forwards;
+}
+
+@keyframes slide-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 스케일 애니메이션
+@mixin scale-in($duration: 0.3s, $delay: 0s) {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scale-in $duration ease-out $delay forwards;
+}
+
+@keyframes scale-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 로딩 스피너
+@mixin spinner($size: 20px, $border-width: 2px, $color: $primary-500) {
+  width: $size;
+  height: $size;
+  border: $border-width solid rgba($color, 0.3);
+  border-radius: 50%;
+  border-top-color: $color;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 그라데이션 믹스인
+// ============================================================================
+
+// 선형 그라데이션
+@mixin gradient-linear($direction: to right, $colors...) {
+  background: linear-gradient($direction, $colors);
+}
+
+// 방사형 그라데이션
+@mixin gradient-radial($colors...) {
+  background: radial-gradient(circle, $colors);
+}
+
+// 글래스모피즘 효과
+@mixin glassmorphism($opacity: 0.1, $blur: 10px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// 스크롤바 커스터마이징 (Webkit 브라우저)
+// ============================================================================
+@mixin custom-scrollbar($width: 8px, $track-color: transparent, $thumb-color: rgba(0, 0, 0, 0.3)) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: calc($width / 2);
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

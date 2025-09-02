@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- 기본 메타 정보 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO 최적화 메타 태그 -->
+    <title>최봉규 - 프론트엔드 개발자 포트폴리오</title>
+    <meta name="description" content="신입 프론트엔드 개발자 최봉규의 포트폴리오입니다. HTML, CSS, JavaScript, React를 활용한 다양한 프로젝트를 소개합니다.">
+    <meta name="keywords" content="프론트엔드, 개발자, 포트폴리오, HTML, CSS, JavaScript, React, 웹개발, 신입개발자">
+    <meta name="author" content="최봉규">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (소셜 미디어 공유 최적화) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="최봉규 - 프론트엔드 개발자 포트폴리오">
+    <meta property="og:description" content="신입 프론트엔드 개발자 최봉규의 포트폴리오입니다. 다양한 웹 프로젝트와 기술 스택을 소개합니다.">
+    <meta property="og:url" content="https://chbg90.github.io/portfolio">
+    <meta property="og:image" content="./img/me.jpg">
+    <meta property="og:locale" content="ko_KR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="최봉규 - 프론트엔드 개발자 포트폴리오">
+    <meta name="twitter:description" content="신입 프론트엔드 개발자 최봉규의 포트폴리오">
+    <meta name="twitter:image" content="./img/me.jpg">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+    
+    <!-- 폰트 프리로딩 및 최적화 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS 파일 -->
+    <link rel="stylesheet" href="./main.css">
+    
+    <!-- 구조화된 데이터 (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "최봉규",
+        "jobTitle": "프론트엔드 개발자",
+        "description": "신입 프론트엔드 개발자로 HTML, CSS, JavaScript, React를 활용한 웹 개발에 전념하고 있습니다.",
+        "url": "https://chbg90.github.io/portfolio",
+        "email": "fig7261@naver.com",
+        "telephone": "+82-10-5485-8592",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "부산",
+            "addressRegion": "기장군",
+            "addressCountry": "KR"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "울산과학대학"
+        },
+        "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "SCSS", "jQuery", "Git", "Figma", "Photoshop"],
+        "sameAs": [
+            "https://blog.naver.com/fig7261",
+            "https://github.com/chbg90"
+        ]
+    }
+    </script>
+    
+    <!-- JavaScript 파일 (defer로 최적화) -->
+    <script src="./main.js" defer></script>
+    
+    <!-- GSAP 라이브러리 (필요시에만 로드) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
+</head>
+
+<body>
+    <!-- Skip to content 링크 (접근성) -->
+    <a href="#main-content" class="sr-only sr-only-focusable">본문으로 바로가기</a>
+    
+    <!-- 메인 컨테이너 -->
+    <div class="portfolio-wrapper">
+        
+        <!-- 헤더 (네비게이션) -->
+        <header class="header" role="banner">
+            <nav class="nav" role="navigation" aria-label="주 메뉴">
+                <div class="nav__brand">
+                    <a href="#hero" class="nav__logo" aria-label="홈으로 이동">
+                        <span class="nav__name">최봉규</span>
+                        <span class="nav__title">Frontend Developer</span>
+                    </a>
+                </div>
+                
+                <!-- 모바일 메뉴 토글 버튼 -->
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                </button>
+                
+                <!-- 네비게이션 메뉴 -->
+                <ul class="nav__menu" id="nav-menu" role="list">
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link" aria-describedby="about-desc">
+                            <span class="nav__link-text">About</span>
+                            <span class="sr-only" id="about-desc">프로필 섹션으로 이동</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link" aria-describedby="skills-desc">
+                            <span class="nav__link-text">Skills</span>
+                            <span class="sr-only" id="skills-desc">기술 스택 섹션으로 이동</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link" aria-describedby="projects-desc">
+                            <span class="nav__link-text">Projects</span>
+                            <span class="sr-only" id="projects-desc">프로젝트 섹션으로 이동</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link" aria-describedby="contact-desc">
+                            <span class="nav__link-text">Contact</span>
+                            <span class="sr-only" id="contact-desc">연락처 섹션으로 이동</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- 메인 콘텐츠 -->
+        <main id="main-content" role="main">
+            
+            <!-- 히어로 섹션 -->
+            <section id="hero" class="hero" aria-labelledby="hero-title">
+                <div class="hero__container">
+                    <div class="hero__content">
+                        <p class="hero__greeting" aria-label="인사말">안녕하세요!</p>
+                        <h1 id="hero-title" class="hero__title">
+                            <span class="hero__name">최봉규</span>입니다
+                        </h1>
+                        <p class="hero__subtitle">
+                            <span class="hero__role">프론트엔드 개발자</span>를 꿈꾸며
+                        </p>
+                        <div class="hero__slogan" aria-live="polite">
+                            <p class="hero__slogan-text hero__slogan-text--primary">
+                                늦은만큼 더욱 더 꾸준히,
+                            </p>
+                            <p class="hero__slogan-text hero__slogan-text--secondary">
+                                더 이상 늦지 않기 위해 달리겠습니다!
+                            </p>
+                        </div>
+                        <div class="hero__actions">
+                            <a href="#about" class="btn btn--primary" role="button">
+                                포트폴리오 보기
+                                <span class="btn__icon" aria-hidden="true">↓</span>
+                            </a>
+                            <a href="#contact" class="btn btn--outline" role="button">
+                                연락하기
+                                <span class="btn__icon" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero__visual" aria-hidden="true">
+                        <div class="hero__image-wrapper">
+                            <img src="./img/me.jpg" alt="최봉규 프로필 사진" class="hero__image" loading="eager">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- About 섹션 -->
+            <section id="about" class="about" aria-labelledby="about-title">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="about-title" class="section-title">About Me</h2>
+                        <p class="section-subtitle">저를 소개합니다</p>
+                    </header>
+                    
+                    <div class="about__content">
+                        <!-- 개인 정보 -->
+                        <article class="about__info" aria-labelledby="personal-info-title">
+                            <h3 id="personal-info-title" class="about__section-title">개인정보</h3>
+                            <dl class="about__details">
+                                <div class="about__detail">
+                                    <dt class="about__label">이름</dt>
+                                    <dd class="about__value">최봉규</dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">생년월일</dt>
+                                    <dd class="about__value">1990년 1월 2일</dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">거주지</dt>
+                                    <dd class="about__value">부산 기장군 기장읍</dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">연락처</dt>
+                                    <dd class="about__value">
+                                        <a href="tel:+82-10-5485-8592" class="about__link">010-5485-8592</a>
+                                    </dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">이메일</dt>
+                                    <dd class="about__value">
+                                        <a href="mailto:fig7261@naver.com" class="about__link">fig7261@naver.com</a>
+                                    </dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">학력</dt>
+                                    <dd class="about__value">울산과학대학 기계과</dd>
+                                </div>
+                                <div class="about__detail">
+                                    <dt class="about__label">블로그</dt>
+                                    <dd class="about__value">
+                                        <a href="https://blog.naver.com/fig7261" target="_blank" rel="noopener noreferrer" class="about__link">
+                                            blog.naver.com/fig7261
+                                            <span class="sr-only">(새 창에서 열림)</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </article>
+                        
+                        <!-- 경력 및 자격증 -->
+                        <article class="about__experience" aria-labelledby="experience-title">
+                            <h3 id="experience-title" class="about__section-title">경력 및 자격증</h3>
+                            
+                            <!-- 사회 경험 -->
+                            <div class="about__subsection">
+                                <h4 class="about__subsection-title">사회 경험</h4>
+                                <ul class="about__list" role="list">
+                                    <li class="about__list-item">
+                                        <strong>그린컴퓨터학원</strong> 프론트엔드 과정 (2025.3~2025.9)
+                                    </li>
+                                    <li class="about__list-item">
+                                        <strong>오오치과병원</strong> 경영실 근무 (2022.8~2025.3)
+                                    </li>
+                                    <li class="about__list-item">
+                                        <strong>위드여성병원</strong> 행정실 근무 (2020.12~2022.1)
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 자격증 -->
+                            <div class="about__subsection">
+                                <h4 class="about__subsection-title">자격증</h4>
+                                <ul class="about__list" role="list">
+                                    <li class="about__list-item">정보처리기능사</li>
+                                    <li class="about__list-item">정보기기운용기능사</li>
+                                    <li class="about__list-item">워드프로세서 1급</li>
+                                    <li class="about__list-item">컴퓨터활용능력 3급</li>
+                                    <li class="about__list-item">전산응용기계제도기능사</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills 섹션 -->
+            <section id="skills" class="skills" aria-labelledby="skills-title">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="skills-title" class="section-title">Skills</h2>
+                        <p class="section-subtitle">기술 스택</p>
+                    </header>
+                    
+                    <!-- 스킬 범례 -->
+                    <div class="skills__legend" aria-labelledby="skills-legend-title">
+                        <h3 id="skills-legend-title" class="sr-only">스킬 레벨 범례</h3>
+                        <dl class="skills__legend-list">
+                            <div class="skills__legend-item">
+                                <dt class="skills__legend-level">⭐⭐⭐⭐⭐</dt>
+                                <dd class="skills__legend-desc">잘 다룰줄 알아요</dd>
+                            </div>
+                            <div class="skills__legend-item">
+                                <dt class="skills__legend-level">⭐⭐⭐⭐</dt>
+                                <dd class="skills__legend-desc">다룰 줄 알아요</dd>
+                            </div>
+                            <div class="skills__legend-item">
+                                <dt class="skills__legend-level">⭐⭐⭐</dt>
+                                <dd class="skills__legend-desc">보통이에요</dd>
+                            </div>
+                            <div class="skills__legend-item">
+                                <dt class="skills__legend-level">⭐⭐</dt>
+                                <dd class="skills__legend-desc">해봤어요</dd>
+                            </div>
+                            <div class="skills__legend-item">
+                                <dt class="skills__legend-level">⭐</dt>
+                                <dd class="skills__legend-desc">잘 못해요</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    
+                    <!-- 스킬 리스트 -->
+                    <div class="skills__grid">
+                        <article class="skill-card" aria-labelledby="html-css-title">
+                            <h3 id="html-css-title" class="skill-card__title">HTML/CSS</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 5점">
+                                <span class="skill-card__stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">시멘틱 태그, 반응형 디자인, Flex/Grid 레이아웃 등 구현</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="javascript-title">
+                            <h3 id="javascript-title" class="skill-card__title">JavaScript</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 4점">
+                                <span class="skill-card__stars">⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">기본 문법, DOM 제어, 이벤트 핸들링, 라이브러리 사용 등 구현</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="jquery-title">
+                            <h3 id="jquery-title" class="skill-card__title">jQuery</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 4점">
+                                <span class="skill-card__stars">⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">기본 문법, DOM 제어, 이벤트 핸들링, 라이브러리 사용 등 구현</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="react-title">
+                            <h3 id="react-title" class="skill-card__title">React</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 4점">
+                                <span class="skill-card__stars">⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">컴포넌트 구조 이해, 상태관리 등 가능</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="scss-title">
+                            <h3 id="scss-title" class="skill-card__title">SCSS</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 3점">
+                                <span class="skill-card__stars">⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">기본 구조 이해</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="git-title">
+                            <h3 id="git-title" class="skill-card__title">Git</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 3점">
+                                <span class="skill-card__stars">⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">기본 명령어 사용 가능</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="figma-title">
+                            <h3 id="figma-title" class="skill-card__title">Figma</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 3점">
+                                <span class="skill-card__stars">⭐⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">UI 설계 시 사용해봤음, 간단한 기능 사용가능</p>
+                        </article>
+                        
+                        <article class="skill-card" aria-labelledby="photoshop-title">
+                            <h3 id="photoshop-title" class="skill-card__title">Photoshop</h3>
+                            <div class="skill-card__rating" aria-label="5점 만점에 2점">
+                                <span class="skill-card__stars">⭐⭐</span>
+                            </div>
+                            <p class="skill-card__desc">이미지 수정, 색 보정, 텍스트 삽입 등, 간단한 기능 사용가능</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Q&A 섹션 -->
+            <section id="qna" class="qna" aria-labelledby="qna-title">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="qna-title" class="section-title">Q&A</h2>
+                        <p class="section-subtitle">자주 묻는 질문</p>
+                    </header>
+                    
+                    <div class="qna__list">
+                        <article class="qna__item">
+                            <h3 class="qna__question">Q. 왜 개발자가 되려고 하시나요?</h3>
+                            <div class="qna__answer">
+                                <p>저는 꾸준한 자기계발과 성장을 삶의 목표로 삼고 있습니다.</p>
+                                <p>이러한 가치관이 끊임없이 변화하는 IT 업계와 닮았다고 생각하여, 이 분야에서 저의 역량을 마음껏 펼치고자 개발자의 길을 선택하게 되었습니다.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="qna__item">
+                            <h3 class="qna__question">Q. 어떤 부분에서 흥미를 느꼈나요?</h3>
+                            <div class="qna__answer">
+                                <p>코딩한 결과가 바로 눈으로 확인되는 점이 신기하게 느껴졌습니다.</p>
+                                <p>노력만 한다면 무궁무진한 결과물을 만들어낼 수 있다는 점이 매우 매력적이었습니다.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="qna__item">
+                            <h3 class="qna__question">Q. 자신만의 강점은 무엇인가요?</h3>
+                            <div class="qna__answer">
+                                <p>저의 강점은 꾸준함과 원활한 소통입니다.</p>
+                                <p>이전 직장에서도 동료 및 환자분들과 소통하며 문제를 해결해 왔고, 회사 내에서 맡은 역할을 꾸준히 성실히 수행해왔습니다.</p>
+                                <p>이러한 경험을 바탕으로 앞으로도 꾸준히 코딩하며 편안하게 소통할 수 있다는 점이 저의 강점입니다.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Projects 섹션 -->
+            <section id="projects" class="projects" aria-labelledby="projects-title">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="projects-title" class="section-title">Projects</h2>
+                        <p class="section-subtitle">주요 프로젝트</p>
+                    </header>
+                    
+                    <div class="projects__grid">
+                        <!-- Project 1: PC 쇼핑몰 -->
+                        <article class="project-card" aria-labelledby="project1-title">
+                            <div class="project-card__image">
+                                <img src="./img/pc.jpg" alt="MoreShose PC 버전 스크린샷" loading="lazy">
+                                <div class="project-card__overlay">
+                                    <span class="project-card__type project-card__type--adaptive">적응형</span>
+                                </div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 id="project1-title" class="project-card__title">MoreShose 신발 쇼핑몰</h3>
+                                <p class="project-card__desc">
+                                    프론트엔드 과정 개강 후 처음으로 혼자 만든 프로젝트입니다. 
+                                    JavaScript와 jQuery의 사용법을 직접 찾아가며 구현해보았고, 문법을 익히는 데 큰 도움이 되었습니다.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">HTML/CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">jQuery</span>
+                                    <span class="tech-tag">Swiper</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="https://chbg90.github.io/PC/" target="_blank" rel="noopener noreferrer" 
+                                       class="btn btn--primary btn--sm" role="button">
+                                        라이브 데모
+                                        <span class="sr-only">(새 창에서 열림)</span>
+                                    </a>
+                                    <button type="button" class="btn btn--outline btn--sm" 
+                                            data-modal="project1-detail" aria-haspopup="dialog">
+                                        자세히 보기
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Project 2: 모바일 쇼핑몰 -->
+                        <article class="project-card" aria-labelledby="project2-title">
+                            <div class="project-card__image">
+                                <img src="./img/mobile.jpg" alt="MoreShose 모바일 버전 스크린샷" loading="lazy">
+                                <div class="project-card__overlay">
+                                    <span class="project-card__type project-card__type--mobile">모바일</span>
+                                </div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 id="project2-title" class="project-card__title">MoreShose 모바일 버전</h3>
+                                <p class="project-card__desc">
+                                    MoreShose 홈페이지의 Mobile 버전으로 모바일 환경에 최적화된 사용자 경험을 제공합니다.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">HTML/CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Mobile First</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="https://chbg90.github.io/Mobile/" target="_blank" rel="noopener noreferrer" 
+                                       class="btn btn--primary btn--sm" role="button">
+                                        라이브 데모
+                                        <span class="sr-only">(새 창에서 열림)</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Project 3: 반응형 사이트 -->
+                        <article class="project-card" aria-labelledby="project3-title">
+                            <div class="project-card__image">
+                                <img src="./img/respon.jpg" alt="영화의전당 리뉴얼 사이트 스크린샷" loading="lazy">
+                                <div class="project-card__overlay">
+                                    <span class="project-card__type project-card__type--responsive">반응형</span>
+                                </div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 id="project3-title" class="project-card__title">영화의전당 리뉴얼 사이트</h3>
+                                <p class="project-card__desc">
+                                    팀 프로젝트를 진행하면서 가장 중요하다고 느낀 것은 소통이었습니다. 
+                                    함께 진행하는 프로젝트인 만큼, 작은 부분 하나도 공유하고 의견을 나누는 것이 프로젝트의 완성도와 팀워크에 큰 영향을 미친다는걸 알게 되었습니다.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">HTML/CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">jQuery</span>
+                                    <span class="tech-tag">Responsive</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="https://chbg90.github.io/Team/" target="_blank" rel="noopener noreferrer" 
+                                       class="btn btn--primary btn--sm" role="button">
+                                        라이브 데모
+                                        <span class="sr-only">(새 창에서 열림)</span>
+                                    </a>
+                                    <button type="button" class="btn btn--outline btn--sm" 
+                                            data-modal="project3-detail" aria-haspopup="dialog">
+                                        자세히 보기
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Project 4: React 프로젝트 -->
+                        <article class="project-card" aria-labelledby="project4-title">
+                            <div class="project-card__image">
+                                <img src="./img/react.jpg" alt="축제야 놀자 홈페이지 스크린샷" loading="lazy">
+                                <div class="project-card__overlay">
+                                    <span class="project-card__type project-card__type--react">React</span>
+                                </div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 id="project4-title" class="project-card__title">축제야 놀자 홈페이지</h3>
+                                <p class="project-card__desc">
+                                    React 프로젝트의 기본이라고 할 수 있는 Router 사용법과 styled-components의 사용법을 익힐 수 있는 프로젝트였으며, 
+                                    이를 통해 컴포넌트 기반의 UI설계 및 페이지 간의 원활한 이동 처리에 대한 이해도를 높일 수 있었습니다.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Redux Toolkit</span>
+                                    <span class="tech-tag">Styled Components</span>
+                                    <span class="tech-tag">React Router</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="https://chbg90.github.io/portfolio/" target="_blank" rel="noopener noreferrer" 
+                                       class="btn btn--primary btn--sm" role="button">
+                                        라이브 데모
+                                        <span class="sr-only">(새 창에서 열림)</span>
+                                    </a>
+                                    <button type="button" class="btn btn--outline btn--sm" 
+                                            data-modal="project4-detail" aria-haspopup="dialog">
+                                        자세히 보기
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact 섹션 -->
+            <section id="contact" class="contact" aria-labelledby="contact-title">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="contact-title" class="section-title">Contact</h2>
+                        <p class="section-subtitle">연락처</p>
+                    </header>
+                    
+                    <div class="contact__content">
+                        <div class="contact__message" aria-live="polite">
+                            <p class="contact__thanks" aria-label="감사 인사">THANK YOU!</p>
+                            <p class="contact__hiring-message">
+                                <strong class="contact__emphasis">뽑아주신다면</strong> 
+                                후회없는 결과로 보답하겠습니다!
+                            </p>
+                        </div>
+                        
+                        <address class="contact__info">
+                            <h3 class="sr-only">연락처 정보</h3>
+                            <dl class="contact__details">
+                                <div class="contact__detail">
+                                    <dt class="contact__label">이름</dt>
+                                    <dd class="contact__value">최봉규</dd>
+                                </div>
+                                <div class="contact__detail">
+                                    <dt class="contact__label">전화</dt>
+                                    <dd class="contact__value">
+                                        <a href="tel:+82-10-5485-8592" class="contact__link">010-5485-8592</a>
+                                    </dd>
+                                </div>
+                                <div class="contact__detail">
+                                    <dt class="contact__label">이메일</dt>
+                                    <dd class="contact__value">
+                                        <a href="mailto:fig7261@naver.com" class="contact__link">fig7261@naver.com</a>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </address>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <!-- 푸터 -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <div class="footer__content">
+                    <p class="footer__copyright">
+                        &copy; 2025 최봉규. All rights reserved.
+                    </p>
+                    <div class="footer__links">
+                        <a href="https://blog.naver.com/fig7261" target="_blank" rel="noopener noreferrer" 
+                           class="footer__link" aria-label="네이버 블로그">
+                            Blog
+                            <span class="sr-only">(새 창에서 열림)</span>
+                        </a>
+                        <a href="https://github.com/chbg90" target="_blank" rel="noopener noreferrer" 
+                           class="footer__link" aria-label="GitHub">
+                            GitHub
+                            <span class="sr-only">(새 창에서 열림)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- 스크롤 인디케이터 (접근성 고려) -->
+        <div class="scroll-indicator" aria-hidden="true" role="presentation">
+            <div class="scroll-indicator__icon">
+                <span class="scroll-indicator__text">스크롤</span>
+                <span class="scroll-indicator__arrow">↓</span>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- 스킵 링크 (키보드 네비게이션용) -->
+    <div class="skip-links" aria-label="빠른 네비게이션">
+        <a href="#main-content" class="skip-link">본문으로 바로가기</a>
+        <a href="#nav-menu" class="skip-link">메뉴로 바로가기</a>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+// ============================================================================
+// 히어로 섹션 컴포넌트 스타일
+// ============================================================================
+
+.hero {
+  min-height: 100vh;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+  
+  // 배경 그라데이션
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.05) 0%,
+    rgba(217, 70, 239, 0.05) 50%,
+    rgba(236, 252, 203, 0.05) 100%
+  );
+  
+  // 패턴 오버레이
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(217, 70, 239, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  // 상단 여백 (헤더 높이만큼)
+  padding-top: 4rem;
+  
+  @include respond-to('tablet') {
+    padding-top: 4.5rem;
+  }
+}
+
+.hero__container {
+  @include container(1200px);
+  @include grid-auto-fit(300px, $spacing-12);
+  align-items: center;
+  min-height: calc(100vh - 4rem);
+  
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 4.5rem);
+  }
+}
+
+// 콘텐츠 영역
+.hero__content {
+  @include flex-column;
+  gap: $spacing-6;
+  text-align: center;
+  
+  @include respond-to('tablet') {
+    text-align: left;
+    gap: $spacing-8;
+  }
+  
+  // 애니메이션 준비
+  & > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  & > *:nth-child(1) { animation-delay: 0.1s; }
+  & > *:nth-child(2) { animation-delay: 0.2s; }
+  & > *:nth-child(3) { animation-delay: 0.3s; }
+  & > *:nth-child(4) { animation-delay: 0.4s; }
+  & > *:nth-child(5) { animation-delay: 0.5s; }
+}
+
+.hero__greeting {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  color: $primary-600;
+  font-weight: $font-weight-medium;
+  margin: 0;
+}
+
+// 메인 타이틀 (H1)
+.hero__title {
+  @include fluid-font($font-size-4xl, $font-size-6xl);
+  font-weight: $font-weight-black;
+  line-height: $line-height-tight;
+  color: $neutral-900;
+  margin: 0;
+  
+  // 텍스트 그라데이션
+  .hero__name {
+    background: linear-gradient(135deg, $primary-600, $secondary-500);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+}
+
+.hero__subtitle {
+  @include fluid-font($font-size-xl, $font-size-2xl);
+  color: $neutral-600;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  margin: 0;
+  
+  .hero__role {
+    color: $primary-600;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// 슬로건 영역
+.hero__slogan {
+  @include flex-column;
+  gap: $spacing-2;
+  
+  @include respond-to('tablet') {
+    gap: $spacing-3;
+  }
+}
+
+.hero__slogan-text {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  color: $neutral-700;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-relaxed;
+  margin: 0;
+  
+  &--primary {
+    color: $primary-700;
+  }
+  
+  &--secondary {
+    color: $secondary-600;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// 액션 버튼들
+.hero__actions {
+  display: flex;
+  gap: $spacing-4;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @include respond-to('tablet') {
+    justify-content: flex-start;
+    gap: $spacing-6;
+  }
+}
+
+// 비주얼 영역
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  // 애니메이션
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.hero__image-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  
+  @include respond-to('tablet') {
+    width: 320px;
+    height: 320px;
+  }
+  
+  @include respond-to('laptop') {
+    width: 360px;
+    height: 360px;
+  }
+  
+  // 배경 원형 그라데이션
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(135deg, $primary-500, $secondary-500);
+    border-radius: $border-radius-full;
+    z-index: -1;
+    animation: rotateGradient 4s linear infinite;
+  }
+  
+  // 블러 효과 배경
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: linear-gradient(135deg, $primary-200, $secondary-200);
+    border-radius: $border-radius-full;
+    filter: blur(30px);
+    opacity: 0.6;
+    z-index: -1;
+  }
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $border-radius-full;
+  border: 4px solid $neutral-0;
+  box-shadow: $shadow-2xl;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// 애니메이션 키프레임
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(
+      135deg,
+      rgba(14, 165, 233, 0.1) 0%,
+      rgba(217, 70, 239, 0.1) 50%,
+      rgba(15, 23, 42, 0.8) 100%
+    );
+  }
+  
+  .hero__title {
+    color: $neutral-0;
+  }
+  
+  .hero__subtitle {
+    color: $neutral-300;
+  }
+  
+  .hero__slogan-text {
+    color: $neutral-200;
+    
+    &--primary {
+      color: $primary-400;
+    }
+    
+    &--secondary {
+      color: $secondary-400;
+    }
+  }
+  
+  .hero__image {
+    border-color: $neutral-800;
+  }
+}
+
+// Reduced motion 지원
+@media (prefers-reduced-motion: reduce) {
+  .hero__content > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .hero__visual {
+    animation: none;
+  }
+  
+  .hero__name {
+    animation: none;
+  }
+  
+  .hero__image-wrapper::before {
+    animation: none;
+  }
+}

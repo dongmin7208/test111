@@ -1,0 +1,310 @@
+// ============================================================================
+// 타이포그래피 기본 스타일
+// ============================================================================
+
+// 헤딩 기본 스타일
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $neutral-900;
+  margin: 0;
+  
+  // 레터 스페이싱
+  letter-spacing: -0.02em;
+  
+  // 텍스트 렌더링 최적화
+  text-rendering: optimizeLegibility;
+}
+
+// 헤딩 크기별 스타일
+h1 {
+  @include fluid-font($font-size-3xl, $font-size-5xl);
+  font-weight: $font-weight-black;
+  line-height: $line-height-none;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  @include fluid-font($font-size-2xl, $font-size-4xl);
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+}
+
+h3 {
+  @include fluid-font($font-size-xl, $font-size-2xl);
+  font-weight: $font-weight-bold;
+}
+
+h4 {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  font-weight: $font-weight-semibold;
+}
+
+h5 {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// 본문 텍스트 스타일
+p {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-relaxed;
+  color: $neutral-700;
+  margin: 0;
+  
+  // 한글 최적화
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+// 링크 스타일
+a {
+  color: $primary-600;
+  text-decoration: none;
+  transition: all $transition-fast;
+  
+  &:hover {
+    color: $primary-700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+}
+
+// 강조 텍스트
+strong, b {
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+}
+
+em, i {
+  font-style: italic;
+  color: $neutral-800;
+}
+
+// 작은 텍스트
+small {
+  font-size: $font-size-sm;
+  color: $neutral-600;
+  line-height: $line-height-normal;
+}
+
+// 큰 텍스트
+.text-large {
+  @include fluid-font($font-size-lg, $font-size-xl);
+}
+
+// 섹션 헤더 스타일
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+  
+  @include respond-to('tablet') {
+    margin-bottom: $spacing-20;
+  }
+}
+
+.section-title {
+  @include fluid-font($font-size-3xl, $font-size-4xl);
+  font-weight: $font-weight-black;
+  margin-bottom: $spacing-4;
+  
+  // 기본 색상 (그라데이션 미지원 브라우저용)
+  color: $primary-700;
+  
+  // 텍스트 그라데이션 (지원하는 브라우저만)
+  background: linear-gradient(135deg, $primary-700, $secondary-600);
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  // 그라데이션을 지원하는 브라우저에서만 투명화
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+.section-subtitle {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  font-weight: $font-weight-normal;
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+}
+
+// 리스트 스타일
+ul, ol {
+  padding-left: $spacing-6;
+  
+  li {
+    margin-bottom: $spacing-2;
+    color: $neutral-700;
+    line-height: $line-height-relaxed;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+ul {
+  list-style-type: disc;
+  
+  ul {
+    list-style-type: circle;
+    margin-top: $spacing-2;
+  }
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+// 인용구
+blockquote {
+  border-left: 4px solid $primary-500;
+  padding-left: $spacing-6;
+  margin: $spacing-6 0;
+  font-style: italic;
+  font-size: $font-size-lg;
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+  
+  cite {
+    display: block;
+    margin-top: $spacing-3;
+    font-size: $font-size-sm;
+    font-style: normal;
+    color: $neutral-500;
+    
+    &::before {
+      content: '— ';
+    }
+  }
+}
+
+// 코드 스타일
+code {
+  font-family: $font-mono;
+  font-size: 0.9em;
+  background-color: $neutral-100;
+  padding: 0.125em 0.25em;
+  border-radius: $border-radius-sm;
+  color: $secondary-700;
+  font-weight: $font-weight-medium;
+}
+
+pre {
+  font-family: $font-mono;
+  background-color: $neutral-900;
+  color: $neutral-100;
+  padding: $spacing-4;
+  border-radius: $border-radius-lg;
+  overflow-x: auto;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// 유틸리티 클래스
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-2xl { font-size: $font-size-2xl; }
+.text-3xl { font-size: $font-size-3xl; }
+.text-4xl { font-size: $font-size-4xl; }
+
+.font-thin { font-weight: $font-weight-thin; }
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-normal; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+.font-black { font-weight: $font-weight-black; }
+
+.leading-none { line-height: $line-height-none; }
+.leading-tight { line-height: $line-height-tight; }
+.leading-normal { line-height: $line-height-normal; }
+.leading-relaxed { line-height: $line-height-relaxed; }
+.leading-loose { line-height: $line-height-loose; }
+
+// 색상 유틸리티
+.text-primary { color: $primary-600; }
+.text-secondary { color: $secondary-600; }
+.text-success { color: $success; }
+.text-warning { color: $warning; }
+.text-error { color: $error; }
+.text-neutral-900 { color: $neutral-900; }
+.text-neutral-700 { color: $neutral-700; }
+.text-neutral-600 { color: $neutral-600; }
+.text-neutral-500 { color: $neutral-500; }
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  h1, h2, h3, h4, h5, h6 {
+    color: $neutral-0;
+  }
+  
+  p {
+    color: $neutral-300;
+  }
+  
+  strong, b {
+    color: $neutral-100;
+  }
+  
+  em, i {
+    color: $neutral-200;
+  }
+  
+  small {
+    color: $neutral-400;
+  }
+  
+  .section-subtitle {
+    color: $neutral-400;
+  }
+  
+  ul li,
+  ol li {
+    color: $neutral-300;
+  }
+  
+  blockquote {
+    color: $neutral-400;
+    border-left-color: $primary-400;
+    
+    cite {
+      color: $neutral-500;
+    }
+  }
+  
+  code {
+    background-color: $neutral-800;
+    color: $secondary-300;
+  }
+}

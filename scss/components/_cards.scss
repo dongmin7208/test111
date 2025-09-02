@@ -1,0 +1,292 @@
+// ============================================================================
+// カード系コンポーネント
+// ============================================================================
+
+// 공통 카드 스타일
+.card {
+  background-color: $neutral-0;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+// ============================================================================
+// 스킬 카드
+// ============================================================================
+
+.skill-card {
+  @extend .card;
+  padding: $spacing-6;
+  text-align: center;
+  border: 1px solid $neutral-200;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-8;
+  }
+  
+  &:hover {
+    border-color: $primary-300;
+    background-color: $primary-50;
+  }
+}
+
+.skill-card__title {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin-bottom: $spacing-3;
+}
+
+.skill-card__rating {
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('tablet') {
+    margin-bottom: $spacing-6;
+  }
+}
+
+.skill-card__stars {
+  font-size: $font-size-lg;
+  display: inline-block;
+  letter-spacing: 2px;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-xl;
+  }
+}
+
+.skill-card__desc {
+  font-size: $font-size-sm;
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+  }
+}
+
+// ============================================================================
+// 프로젝트 카드
+// ============================================================================
+
+.project-card {
+  @extend .card;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid $neutral-200;
+  
+  &:hover {
+    border-color: $primary-300;
+  }
+}
+
+.project-card__image {
+  position: relative;
+  overflow: hidden;
+  height: 260px;
+  background: linear-gradient(135deg, $neutral-200, $neutral-300);
+  
+  @include respond-to('tablet') {
+    height: 350px;
+  }
+  
+  @include respond-to('desktop') {
+    height: 380px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-base;
+  }
+  
+  .project-card:hover & img {
+    transform: scale(1.1);
+  }
+}
+
+.project-card__overlay {
+  position: absolute;
+  top: $spacing-4;
+  left: $spacing-4;
+  z-index: 10;
+}
+
+.project-card__type {
+  display: inline-block;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  // 타입별 색상
+  &--adaptive {
+    background-color: $primary-500;
+    color: $neutral-0;
+  }
+  
+  &--mobile {
+    background-color: $secondary-500;
+    color: $neutral-0;
+  }
+  
+  &--responsive {
+    background-color: $success;
+    color: $neutral-0;
+  }
+  
+  &--react {
+    background-color: #61dafb;
+    color: $neutral-900;
+  }
+}
+
+.project-card__content {
+  padding: $spacing-4;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-5;
+  }
+  
+  @include respond-to('desktop') {
+    padding: $spacing-6;
+  }
+}
+
+.project-card__title {
+  @include fluid-font($font-size-lg, $font-size-xl);
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin-bottom: $spacing-3;
+}
+
+.project-card__desc {
+  font-size: $font-size-sm;
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+  flex-grow: 1;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-6;
+  }
+}
+
+.project-card__tech {
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('tablet') {
+    margin-bottom: $spacing-6;
+  }
+  
+  h4 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $neutral-700;
+    margin-bottom: $spacing-2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    padding: $spacing-1 $spacing-2;
+    background-color: $neutral-100;
+    color: $neutral-700;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-sm;
+    margin: 0;
+    
+    @include respond-to('tablet') {
+      padding: $spacing-2 $spacing-3;
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+.project-card__actions {
+  display: flex;
+  gap: $spacing-3;
+  
+  @include respond-to('tablet') {
+    gap: $spacing-4;
+  }
+  
+  .btn {
+    flex: 1;
+  }
+}
+
+// ============================================================================
+// 다크 모드 지원
+// ============================================================================
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: $neutral-800;
+    border-color: $neutral-700;
+  }
+  
+  .skill-card {
+    &:hover {
+      background-color: rgba($primary-500, 0.1);
+      border-color: $primary-400;
+    }
+  }
+  
+  .skill-card__title {
+    color: $neutral-0;
+  }
+  
+  .skill-card__desc {
+    color: $neutral-300;
+  }
+  
+  .project-card {
+    &:hover {
+      border-color: $primary-400;
+    }
+  }
+  
+  .project-card__title {
+    color: $neutral-0;
+  }
+  
+  .project-card__desc {
+    color: $neutral-300;
+  }
+  
+  .project-card__tech {
+    h4 {
+      color: $neutral-200;
+    }
+    
+    li {
+      background-color: $neutral-700;
+      color: $neutral-200;
+    }
+  }
+}

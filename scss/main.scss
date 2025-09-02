@@ -1,0 +1,196 @@
+// ============================================================================
+// Main SCSS File - 모든 스타일 파일 임포트
+// ============================================================================
+
+// 1. Abstracts (변수, 함수, 믹스인)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Base Styles (리셋, 기본 스타일)
+@import 'base/reset';
+@import 'base/typography';
+
+// 3. Layout
+@import 'layout/header';
+
+// 4. Components
+@import 'components/buttons';
+@import 'components/hero';
+@import 'components/cards';
+@import 'components/sections';
+
+// 6. Utilities
+@import 'utilities/helpers';
+
+// ============================================================================
+// 전역 스타일
+// ============================================================================
+
+// 포트폴리오 래퍼
+.portfolio-wrapper {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// 스킵 링크 스타일
+.skip-links {
+  position: absolute;
+  top: $spacing-2;
+  left: $spacing-2;
+  z-index: $z-index-tooltip;
+  
+  .skip-link {
+    @include sr-only;
+    
+    &:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: $spacing-2 $spacing-4;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: nowrap;
+      background-color: $primary-600;
+      color: $neutral-0;
+      border-radius: $border-radius-md;
+      font-weight: $font-weight-bold;
+      text-decoration: none;
+      box-shadow: $shadow-lg;
+    }
+  }
+}
+
+// 스크롤 인디케이터
+.scroll-indicator {
+  position: fixed;
+  bottom: $spacing-8;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-index-fixed;
+  transition: all $transition-base;
+  
+  // 기본적으로 표시
+  opacity: 1;
+  visibility: visible;
+  
+  // 스크롤 시 숨김 (JavaScript로 제어)
+  &.scroll-indicator--hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+
+.scroll-indicator__icon {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-1;
+  padding: $spacing-3;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: $border-radius-full;
+  box-shadow: $shadow-lg;
+  backdrop-filter: blur(10px);
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.scroll-indicator__text {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $neutral-600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scroll-indicator__arrow {
+  font-size: $font-size-lg;
+  color: $primary-600;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+// 섹션 공통 스타일
+section {
+  padding: $spacing-16 0;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-20 0;
+  }
+  
+  @include respond-to('desktop') {
+    padding: $spacing-24 0;
+  }
+  
+  @include respond-to('desktop-l') {
+    padding: $spacing-32 0;
+  }
+}
+
+// 푸터 기본 스타일
+.footer {
+  background-color: $neutral-900;
+  color: $neutral-300;
+  padding: $spacing-12 0;
+  margin-top: auto;
+}
+
+.footer__content {
+  @include container(1200px);
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+  
+  @include respond-below('tablet') {
+    flex-direction: column;
+    text-align: center;
+    gap: $spacing-6;
+  }
+}
+
+.footer__copyright {
+  font-size: $font-size-sm;
+  color: $neutral-400;
+}
+
+.footer__links {
+  display: flex;
+  gap: $spacing-6;
+  
+  @include respond-below('tablet') {
+    justify-content: center;
+  }
+}
+
+.footer__link {
+  color: $neutral-300;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+  
+  &:hover {
+    color: $primary-400;
+    transform: translateY(-2px);
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+}

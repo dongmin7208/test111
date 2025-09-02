@@ -1,0 +1,294 @@
+// ============================================================================
+// 헤더 및 네비게이션 레이아웃 스타일
+// ============================================================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+  
+  // 글래스모피즘 효과
+  @include glassmorphism(0.95, 20px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  // 보더 효과
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  transition: all $transition-base;
+  
+  // 스크롤 시 배경 변화
+  &.header--scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: $neutral-200;
+    box-shadow: $shadow-sm;
+  }
+}
+
+.nav {
+  @include container(1200px);
+  @include flex-between;
+  height: 4rem;
+  
+  @include respond-to('tablet') {
+    height: 4.5rem;
+  }
+}
+
+// 브랜드 로고 영역
+.nav__brand {
+  flex-shrink: 0;
+}
+
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+}
+
+.nav__name {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  line-height: $line-height-tight;
+}
+
+.nav__title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $primary-600;
+  line-height: $line-height-tight;
+  margin-top: -2px;
+}
+
+// 모바일 메뉴 토글 버튼
+.nav__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+  
+  @include respond-to('tablet') {
+    display: none;
+  }
+  
+  &:hover {
+    background-color: $neutral-100;
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+  
+  // 햄버거 메뉴 라인
+  .nav__toggle-line {
+    width: 1.5rem;
+    height: 2px;
+    background-color: $neutral-700;
+    border-radius: 1px;
+    transition: all $transition-base;
+    transform-origin: center;
+    
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+  
+  // 활성 상태 (X 모양으로 변환)
+  &[aria-expanded="true"] {
+    .nav__toggle-line {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+      
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+  }
+}
+
+// 네비게이션 메뉴
+.nav__menu {
+  @include flex-center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-8;
+  
+  // 모바일에서 숨김
+  @include respond-below('tablet') {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid $neutral-200;
+    box-shadow: $shadow-lg;
+    
+    // 기본적으로 숨김
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all $transition-base;
+    
+    // 활성 상태
+    &.nav__menu--active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+}
+
+.nav__item {
+  // 모바일에서는 전체 너비
+  @include respond-below('tablet') {
+    width: 100%;
+    border-bottom: 1px solid $neutral-200;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-4;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  color: $neutral-700;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-2 $spacing-3;
+  }
+  
+  // 모바일에서 전체 너비
+  @include respond-below('tablet') {
+    justify-content: center;
+    padding: $spacing-4 $spacing-6;
+    border-radius: 0;
+  }
+  
+  // 호버 효과
+  &:hover {
+    color: $primary-600;
+    background-color: $primary-50;
+    
+    @include respond-to('tablet') {
+      transform: translateY(-2px);
+    }
+  }
+  
+  // 포커스 효과
+  &:focus {
+    @include focus-ring();
+  }
+  
+  // 활성 링크 (현재 섹션)
+  &.nav__link--active {
+    color: $primary-600;
+    font-weight: $font-weight-semibold;
+    
+    // 데스크톱에서 하단 인디케이터
+    @include respond-to('tablet') {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: $primary-600;
+        border-radius: $border-radius-full;
+      }
+    }
+  }
+}
+
+.nav__link-text {
+  font-size: $font-size-base;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-sm;
+  }
+}
+
+// 스크롤에 따른 헤더 숨김/표시
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+// 다크 모드 지원
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    
+    &.header--scrolled {
+      background: rgba(17, 24, 39, 0.98);
+      border-bottom-color: $neutral-700;
+    }
+  }
+  
+  .nav__name {
+    color: $neutral-0;
+  }
+  
+  .nav__toggle-line {
+    background-color: $neutral-300;
+  }
+  
+  .nav__menu {
+    @include respond-below('tablet') {
+      background: rgba(17, 24, 39, 0.98);
+      border-bottom-color: $neutral-700;
+    }
+  }
+  
+  .nav__link {
+    color: $neutral-300;
+    
+    &:hover {
+      color: $primary-400;
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    &.nav__link--active {
+      color: $primary-400;
+    }
+  }
+}

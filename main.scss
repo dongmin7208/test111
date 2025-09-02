@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+
+a {
+  color: black;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px 0 20px 0;
+  width: 300px;
+}
+
+body, html {
+  font-family: "Asta Sans", sans-serif;
+}
+
+.section {
+  max-width: 1250px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.section2 {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  scroll-snap-align: start;
+}
+
+.wrap {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  background-color: #eee;
+}
+
+button a {
+  text-decoration: none;
+}
+
+// side bar
+.side_2, .side_3, .side_4, .side_5, .side_6 {
+  width: 60px;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.side {
+  width: 60px;
+  background-color: black;
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.intro {
+  width: 100%;
+  height: 600px;
+  display: flex;
+}
+
+.slogan, .profile, .qna, .project, .contact {
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+// intro
+.intro_txt {
+  font-size: 1.5rem;
+}
+
+.leftBox, .centerTop, .centerBottom, .rightBox {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    transition: all 0.3s;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  p {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+.centerTop {
+  height: 50%;
+}
+
+.centerBottom {
+  height: 50%;
+}
+
+.icon {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  font-size: 3rem;
+  animation: upDown 1.5s infinite;
+  opacity: 1;
+}
+
+@keyframes upDown {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(15px);
+  }
+}
+
+// slogan
+.runBox {
+  width: 1250px;
+  height: 100%;
+  position: relative;
+
+  .run {
+    position: absolute;
+    left: 11%;
+    bottom: 54%;
+    font-size: 3rem;
+    color: red;
+  }
+
+  .f_txt {
+    position: absolute;
+    left: 20%;
+    bottom: 55%;
+    font-size: 2.2rem;
+  }
+
+  .s_txt {
+    position: absolute;
+    left: 40%;
+    bottom: 48%;
+    font-size: 2.2rem;
+  }
+}
+
+// profile
+.profileBox, .etcBox, .skillBox {
+  width: calc(100% / 3);
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
+}
+
+.etcBox {
+  padding-right: 0;
+}
+
+.pBox {
+  width: 409px;
+  margin-top: 15px;
+  p {
+    margin-bottom: 23px;
+  }
+}
+
+.etcTitle {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.etc_2 {
+  margin-top: 140px;
+}
+
+.skillFlex {
+  width: 409px;
+  display: flex;
+}
+
+.skillName_1, .skillName_2 {
+  p {
+    width: 100px;
+    height: 35px;
+  }
+}
+
+.star1, .star2, .star3, .star4, .star5 {
+  color: red;
+}
+
+.desc {
+  opacity: 0;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+
+  &:hover {
+    scale: 1.2;
+  }
+}
+
+.skillDesc, .skillName_2 {
+
+  margin-top: 80px;
+  div {
+    height: 50px;
+  }
+}
+
+.etc_p, .starBox {
+  p {
+    height: 35px;
+  }
+}
+
+.skillName_2 {
+  p {
+    height: 50px;
+  }
+}
+
+// qna
+.qnaBox {
+  width: 100%;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    margin-bottom: 100px;
+  }
+  
+  .q {
+    font-size: 2rem;
+    margin: 15px 0 15px 0;
+  }
+
+  .a {
+    font-size: 1.2rem;
+    margin-left: 16px;
+  }
+}
+
+// project
+.project_1, .project_2, .project_3, .project_4 {
+  height: 750px;
+  position: relative;
+  margin-right: 20px;
+  .pro_img {
+    height: 300px;
+  }
+
+  .pro_txt {
+    margin-top: 20px;
+    p {
+      margin: 0 5px;
+    }
+  }
+
+  .btnBox {
+    position: absolute;
+    bottom: 0;
+
+    button {
+      width: 80px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.project_4 {
+  margin-right: 0;
+}
+
+// modal
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal_content {
+    background-color: white;
+    margin: 30px auto;
+    padding: 50px;
+    width: 1250px;
+    height: 800px;
+    overflow-y: auto;
+    position: relative;
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .pro_title {
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+    }
+
+    .pro_p {
+      color: red;
+      font-size: 1.8rem;
+    }
+
+    .pro_p_2 {
+      font-size: 1.2rem;
+      margin: 10px 0 0 5px;
+    }
+
+    .pro_desc {
+      margin-bottom: 20px;
+    }
+
+    .pro_img_flex {
+      display: flex;
+
+      img {
+        width: 260px;
+        height: 350px;
+        margin: 5px 20px 0 0;
+      }
+    }
+
+    .blueFont {
+      color: blue;
+      margin: 20px 0 10px 0;
+      font-size: 1.5rem;
+    }
+
+    div img {
+      margin-top: 10px;
+    }
+
+    .close_btn {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 50%;
+      color: white;
+      background-color: blue;
+      font-weight: bold;
+      position: fixed;
+      bottom: 30px;
+      right: 200px;
+      opacity: 0;
+    }
+  }
+}
+
+// contact
+.conFlex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .thkBox {
+    font-size: 10rem;
+    text-align: center;
+  }
+
+  .redBox {
+    margin-top: 130px;
+    font-size: 2rem;
+    text-align: center;
+    background-color: white;
+    height: 200px;
+    line-height: 200px;
+  }
+
+  .conBox {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 50px;
+  }
+}
