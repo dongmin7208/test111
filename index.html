@@ -1166,10 +1166,8 @@
 
               <form
                 class="contact__form"
-                action="mailto:fig7261@naver.com"
-                method="post"
-                enctype="text/plain"
                 id="contact-form"
+                autocomplete="on"
               >
                 <h3 class="contact__form-title">메일 보내기</h3>
                 <div class="contact__form-group">
@@ -1182,6 +1180,7 @@
                     required
                     aria-describedby="name-error"
                     placeholder="이름을 입력해주세요..."
+                    autocomplete="name"
                   />
                   <span class="contact__form-error" id="name-error"></span>
                 </div>
@@ -1197,6 +1196,7 @@
                     required
                     aria-describedby="email-error"
                     placeholder="이메일을 입력해주세요..."
+                    autocomplete="email"
                   />
                   <span class="contact__form-error" id="email-error"></span>
                 </div>
