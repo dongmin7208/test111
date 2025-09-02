@@ -162,6 +162,62 @@
   }
 }
 
+// Information 버튼 (코드리뷰) - 프로젝트 메인 컬러와 조화
+.btn--info {
+  @include button-variant($neutral-700, $neutral-0, $neutral-800, $neutral-0);
+  background: $neutral-700 !important;
+  border: 1px solid $neutral-600;
+  color: $neutral-0 !important;
+  
+  * {
+    color: $neutral-0 !important;
+  }
+  
+  &:hover {
+    background: $neutral-800 !important;
+    box-shadow: 0 8px 20px rgba(31, 41, 55, 0.3);
+    border-color: $neutral-700;
+    color: $neutral-0 !important;
+    transform: translateY(-1px);
+    
+    * {
+      color: $neutral-0 !important;
+    }
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.3);
+  }
+}
+
+// Warning 버튼 (기획서) - 프로젝트 세컨더리 컬러와 조화  
+.btn--warning {
+  @include button-variant($secondary-500, $neutral-0, $secondary-600, $neutral-0);
+  background: $secondary-500 !important;
+  border: 1px solid $secondary-400;
+  color: $neutral-0 !important;
+  
+  * {
+    color: $neutral-0 !important;
+  }
+  
+  &:hover {
+    background: $secondary-600 !important;
+    box-shadow: 0 8px 20px rgba(217, 70, 239, 0.3);
+    border-color: $secondary-500;
+    color: $neutral-0 !important;
+    transform: translateY(-1px);
+    
+    * {
+      color: $neutral-0 !important;
+    }
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.3);
+  }
+}
+
 // 버튼 그룹
 .btn-group {
   display: inline-flex;

@@ -564,6 +564,118 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ============================================================================
+    // モーダル機能
+    // ============================================================================
+    
+    class ModalController {
+        constructor() {
+            this.modals = document.querySelectorAll('.modal');
+            this.modalTriggers = document.querySelectorAll('[data-modal]');
+            this.modalCloses = document.querySelectorAll('.modal__close');
+            this.init();
+        }
+        
+        init() {
+            // モーダルトリガーのイベントリスナー
+            this.modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => this.openModal(e, trigger));
+            });
+            
+            // モーダル閉じるボタンのイベントリスナー
+            this.modalCloses.forEach(closeBtn => {
+                closeBtn.addEventListener('click', (e) => this.closeModal(e));
+            });
+            
+            // モーダル背景クリックで閉じる
+            this.modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    // モーダル背景（.modal）を直接クリックしたか、モーダルコンテンツ外をクリックした場合
+                    if (e.target === modal || !modal.querySelector('.modal__content').contains(e.target)) {
+                        this.closeModalById(modal.id);
+                    }
+                });
+            });
+            
+            // ESCキーでモーダル閉じる
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    this.closeAllModals();
+                }
+            });
+        }
+        
+        openModal(e, trigger) {
+            e.preventDefault();
+            const modalId = trigger.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            
+            if (!modal) return;
+            
+            // アクセシビリティのため、ページスクロールを無効化
+            document.body.style.overflow = 'hidden';
+            
+            // モーダル表示
+            modal.classList.add('modal--active');
+            
+            // フォーカス管理
+            const firstFocusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusable) {
+                setTimeout(() => firstFocusable.focus(), 100);
+            }
+            
+            // アニメーション
+            gsap.fromTo(modal.querySelector('.modal__content'), 
+                {
+                    opacity: 0,
+                    scale: 0.8,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "back.out(1.7)"
+                }
+            );
+        }
+        
+        closeModal(e) {
+            e.preventDefault();
+            const modal = e.target.closest('.modal');
+            if (modal) {
+                this.closeModalById(modal.id);
+            }
+        }
+        
+        closeModalById(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            
+            // アニメーション後にモーダル隠す
+            gsap.to(modal.querySelector('.modal__content'), {
+                opacity: 0,
+                scale: 0.8,
+                y: 50,
+                duration: 0.2,
+                ease: "power2.in",
+                onComplete: () => {
+                    modal.classList.remove('modal--active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        closeAllModals() {
+            this.modals.forEach(modal => {
+                if (modal.classList.contains('modal--active')) {
+                    this.closeModalById(modal.id);
+                }
+            });
+        }
+    }
+    
+    // ============================================================================
     // 初期化処理
     // ============================================================================
     
@@ -575,6 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeNavigation = new ActiveNavigation();
     const animationController = new AnimationController();
     const performanceOptimizer = new PerformanceOptimizer();
+    const modalController = new ModalController();
     
     // Reduced motionを優先するユーザーの場合、アニメーションを無効化
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

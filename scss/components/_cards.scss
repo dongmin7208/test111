@@ -151,6 +151,28 @@
   }
 }
 
+.project-card__live-demo {
+  position: absolute;
+  bottom: $spacing-4;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: $spacing-2 $spacing-4;
+  background: rgba($primary-600, 0.95);
+  color: $neutral-0;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  
+  .project-card__image:hover & {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
 .project-card__content {
   padding: $spacing-4;
   flex-grow: 1;

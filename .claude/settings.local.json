@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Bash(sass:*)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)",
+      "Read(/Users/parkdongmin/Downloads/포트폴리오(최봉규)_3차수정/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

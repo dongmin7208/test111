@@ -732,6 +732,530 @@
 }
 
 // ============================================================================
+// Projects 섹션
+// ============================================================================
+
+.projects {
+  background: linear-gradient(135deg, rgba($neutral-50, 0.6), rgba($primary-50, 0.3));
+}
+
+.projects__grid {
+  display: grid;
+  gap: $spacing-8;
+  
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-10;
+  }
+  
+  @include respond-to('desktop') {
+    gap: $spacing-12;
+  }
+}
+
+.project-card {
+  background: $neutral-0;
+  border-radius: $border-radius-2xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  border: 1px solid $neutral-200;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.15),
+      0 0 50px rgba($primary-500, 0.1);
+    border-color: $primary-300;
+    
+    .project-card__image img {
+      transform: scale(1.1);
+    }
+    
+    .project-card__overlay {
+      background: rgba($primary-600, 0.95);
+    }
+    
+    .project-card__type {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.project-card__image {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  
+  @include respond-to('tablet') {
+    height: 320px;
+  }
+  
+  @include respond-to('desktop') {
+    height: 350px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+.project-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($neutral-900, 0.4);
+  display: flex;
+  align-items: flex-end;
+  padding: $spacing-4;
+  transition: all 0.3s ease;
+}
+
+.project-card__type {
+  background: $neutral-0;
+  color: $neutral-900;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: all 0.3s ease;
+  box-shadow: $shadow-sm;
+  
+  &--adaptive {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: $neutral-0;
+  }
+  
+  &--mobile {
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: $neutral-0;
+  }
+  
+  &--responsive {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: $neutral-0;
+  }
+  
+  &--react {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color: $neutral-0;
+  }
+}
+
+.project-card__content {
+  padding: $spacing-6;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-8;
+  }
+}
+
+.project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-4;
+  gap: $spacing-3;
+}
+
+.project-card__title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin: 0;
+  flex-grow: 1;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-xl;
+  }
+}
+
+.project-card__period {
+  background: $primary-50;
+  color: $primary-700;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-md;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.project-card__desc {
+  font-size: $font-size-sm;
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-6;
+  }
+}
+
+.project-card__section-title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $neutral-800;
+  margin: 0 0 $spacing-2 0;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.project-card__icon {
+  font-size: $font-size-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.project-card__achievement {
+  background: rgba($success, 0.05);
+  border: 1px solid rgba($success, 0.2);
+  border-radius: $border-radius-lg;
+  padding: $spacing-3;
+  margin-bottom: $spacing-4;
+  
+  p {
+    font-size: $font-size-sm;
+    color: $neutral-700;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+  
+  @include respond-to('tablet') {
+    padding: $spacing-4;
+    
+    p {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.project-card__challenge {
+  background: rgba($warning, 0.05);
+  border: 1px solid rgba($warning, 0.2);
+  border-radius: $border-radius-lg;
+  padding: $spacing-3;
+  margin-bottom: $spacing-6;
+  
+  p {
+    font-size: $font-size-sm;
+    color: $neutral-700;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+  
+  @include respond-to('tablet') {
+    padding: $spacing-4;
+    
+    p {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  margin-bottom: $spacing-6;
+}
+
+.tech-tag {
+  background: $neutral-100;
+  color: $neutral-700;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border: 1px solid $neutral-200;
+  transition: all 0.2s ease;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-sm;
+    padding: $spacing-2 $spacing-3;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
+  
+  // 기술별 색상 구분
+  &--html {
+    background: rgba(#e34f26, 0.1);
+    color: #e34f26;
+    border-color: rgba(#e34f26, 0.3);
+  }
+  
+  &--js {
+    background: rgba(#f7df1e, 0.2);
+    color: #d4ac00;
+    border-color: rgba(#f7df1e, 0.5);
+  }
+  
+  &--jquery {
+    background: rgba(#0769ad, 0.1);
+    color: #0769ad;
+    border-color: rgba(#0769ad, 0.3);
+  }
+  
+  &--react {
+    background: rgba(#61dafb, 0.1);
+    color: #21759b;
+    border-color: rgba(#61dafb, 0.3);
+  }
+  
+  &--redux {
+    background: rgba(#764abc, 0.1);
+    color: #764abc;
+    border-color: rgba(#764abc, 0.3);
+  }
+  
+  &--styled {
+    background: rgba(#db7093, 0.1);
+    color: #c45a7b;
+    border-color: rgba(#db7093, 0.3);
+  }
+  
+  &--router {
+    background: rgba(#ca4245, 0.1);
+    color: #ca4245;
+    border-color: rgba(#ca4245, 0.3);
+  }
+  
+  &--library {
+    background: rgba($secondary-500, 0.1);
+    color: $secondary-700;
+    border-color: rgba($secondary-500, 0.3);
+  }
+  
+  &--responsive {
+    background: rgba($primary-500, 0.1);
+    color: $primary-700;
+    border-color: rgba($primary-500, 0.3);
+  }
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  
+  @include respond-to('tablet') {
+    gap: $spacing-3;
+  }
+  
+  .btn {
+    flex: 1;
+    min-width: auto;
+    justify-content: center;
+    
+    @include respond-to('tablet') {
+      flex: none;
+      min-width: 120px;
+    }
+    
+    .btn__icon {
+      margin-left: 0;
+      margin-right: $spacing-1;
+      font-size: 0.9em;
+    }
+  }
+}
+
+// ============================================================================
+// 모달 스타일
+// ============================================================================
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1040;
+  display: none;
+  
+  &.modal--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($neutral-900, 0.8);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.modal__content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  background: $neutral-0;
+  border-radius: $border-radius-2xl;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 1;
+  
+  @include respond-to('tablet') {
+    width: 80%;
+  }
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-6;
+  border-bottom: 1px solid $neutral-200;
+  background: linear-gradient(135deg, $primary-50, $secondary-50);
+  
+  @include respond-to('tablet') {
+    padding: $spacing-8;
+  }
+}
+
+.modal__title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin: 0;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-xl;
+  }
+}
+
+.modal__close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: $neutral-100;
+  color: $neutral-600;
+  border-radius: $border-radius-full;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  
+  // HTML의 &times; 사용하므로 ::before 제거
+  
+  &:hover {
+    background: $neutral-200;
+    color: $neutral-800;
+    transform: scale(1.05) rotate(90deg);
+    box-shadow: $shadow-md;
+  }
+  
+  &:focus {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+}
+
+.modal__body {
+  padding: $spacing-6;
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-8;
+  }
+}
+
+.modal__section {
+  margin-bottom: $spacing-6;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.modal__section-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $primary-700;
+  margin-bottom: $spacing-3;
+  padding-left: $spacing-3;
+  border-left: 4px solid $primary-500;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.modal__code-title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $secondary-600;
+  margin: $spacing-4 0 $spacing-2 0;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-lg;
+  }
+}
+
+.modal__text {
+  font-size: $font-size-sm;
+  color: $neutral-700;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-base;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.modal__image {
+  margin: $spacing-4 0;
+  
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+    margin-bottom: $spacing-3;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ============================================================================
 // QnA 섹션
 // ============================================================================
 

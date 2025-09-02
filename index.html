@@ -554,40 +554,68 @@
           <div class="container">
             <header class="section-header">
               <h2 id="projects-title" class="section-title">Projects</h2>
-              <p class="section-subtitle">주요 프로젝트</p>
+              <p class="section-subtitle">주요 프로젝트와 개발 경험</p>
             </header>
 
             <div class="projects__grid">
               <!-- Project 1: PC 쇼핑몰 -->
               <article class="project-card" aria-labelledby="project1-title">
-                <div class="project-card__image">
+                <div class="project-card__image" style="cursor: pointer;" onclick="window.open('https://chbg90.github.io/PC/', '_blank')">
                   <img
                     src="./img/pc.jpg"
                     alt="MoreShose PC 버전 스크린샷"
                     loading="lazy"
                   />
                   <div class="project-card__overlay">
-                    <span
-                      class="project-card__type project-card__type--adaptive"
-                      >적응형</span
-                    >
+                    <span class="project-card__type project-card__type--adaptive">적응형</span>
+                    <div class="project-card__live-demo">🔗 라이브 데모 보기</div>
                   </div>
                 </div>
                 <div class="project-card__content">
-                  <h3 id="project1-title" class="project-card__title">
-                    MoreShose 신발 쇼핑몰
-                  </h3>
+                  <div class="project-card__header">
+                    <h3 id="project1-title" class="project-card__title">
+                      MoreShose 신발 쇼핑몰
+                    </h3>
+                    <div class="project-card__period">개인 프로젝트</div>
+                  </div>
+                  
                   <p class="project-card__desc">
                     프론트엔드 과정 개강 후 처음으로 혼자 만든 프로젝트입니다.
-                    JavaScript와 jQuery의 사용법을 직접 찾아가며 구현해보았고,
-                    문법을 익히는 데 큰 도움이 되었습니다.
                   </p>
-                  <div class="project-card__tech">
-                    <span class="tech-tag">HTML/CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">jQuery</span>
-                    <span class="tech-tag">Swiper</span>
+                  
+                  <!-- 개발 성과 -->
+                  <div class="project-card__achievement">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">🎯</span>
+                      개발 성과
+                    </h4>
+                    <p>
+                      JavaScript와 jQuery의 사용법을 직접 찾아가며 구현해보았고, 
+                      문법을 익히는 데 큰 도움이 되었습니다.
+                    </p>
                   </div>
+                  
+                  <!-- 어려웠던 점 -->
+                  <div class="project-card__challenge">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">💡</span>
+                      어려웠던 점
+                    </h4>
+                    <p>
+                      Swiper 라이브러리를 사용하는 과정에서, 단순히 보이는 코드만으로는 
+                      이해할 수 없는 부분이 많다는 것을 알게 되었습니다. 
+                      '라이브러리 사용은 쉽다'는 생각이 잘못됐음을 느꼈고, 
+                      어떤 코드든 쉽게 넘길 수 없으며 결국 공부가 필요하다는 교훈을 얻었습니다.
+                    </p>
+                  </div>
+                  
+                  <div class="project-card__tech">
+                    <span class="tech-tag tech-tag--html">HTML/CSS</span>
+                    <span class="tech-tag tech-tag--js">JavaScript</span>
+                    <span class="tech-tag tech-tag--jquery">jQuery</span>
+                    <span class="tech-tag tech-tag--library">Swiper</span>
+                  </div>
+                  
                   <div class="project-card__actions">
                     <a
                       href="https://chbg90.github.io/PC/"
@@ -596,16 +624,27 @@
                       class="btn btn--primary btn--sm"
                       role="button"
                     >
+                      <span class="btn__icon">🔗</span>
                       라이브 데모
                       <span class="sr-only">(새 창에서 열림)</span>
                     </a>
                     <button
                       type="button"
-                      class="btn btn--outline btn--sm"
-                      data-modal="project1-detail"
+                      class="btn btn--warning btn--sm"
+                      data-modal="project1-planning"
                       aria-haspopup="dialog"
                     >
-                      자세히 보기
+                      <span class="btn__icon">📋</span>
+                      기획서
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn--info btn--sm"
+                      data-modal="project1-review"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="btn__icon">💻</span>
+                      코드리뷰
                     </button>
                   </div>
                 </div>
@@ -613,31 +652,47 @@
 
               <!-- Project 2: 모바일 쇼핑몰 -->
               <article class="project-card" aria-labelledby="project2-title">
-                <div class="project-card__image">
+                <div class="project-card__image" style="cursor: pointer;" onclick="window.open('https://chbg90.github.io/mobile/', '_blank')">
                   <img
                     src="./img/mobile.jpg"
                     alt="MoreShose 모바일 버전 스크린샷"
                     loading="lazy"
                   />
                   <div class="project-card__overlay">
-                    <span class="project-card__type project-card__type--mobile"
-                      >모바일</span
-                    >
+                    <span class="project-card__type project-card__type--mobile">모바일</span>
+                    <div class="project-card__live-demo">🔗 라이브 데모 보기</div>
                   </div>
                 </div>
                 <div class="project-card__content">
-                  <h3 id="project2-title" class="project-card__title">
-                    MoreShose 모바일 버전
-                  </h3>
-                  <p class="project-card__desc">
-                    MoreShose 홈페이지의 Mobile 버전으로 모바일 환경에 최적화된
-                    사용자 경험을 제공합니다.
-                  </p>
-                  <div class="project-card__tech">
-                    <span class="tech-tag">HTML/CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Mobile First</span>
+                  <div class="project-card__header">
+                    <h3 id="project2-title" class="project-card__title">
+                      MoreShose 모바일 버전
+                    </h3>
+                    <div class="project-card__period">개인 프로젝트</div>
                   </div>
+                  
+                  <p class="project-card__desc">
+                    MoreShose 홈페이지의 Mobile 버전으로 모바일 환경에 최적화된 사용자 경험을 제공합니다.
+                  </p>
+                  
+                  <!-- 개발 성과 -->
+                  <div class="project-card__achievement">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">🎯</span>
+                      개발 성과
+                    </h4>
+                    <p>
+                      모바일 퍼스트 디자인 원칙을 적용하여 터치 인터페이스에 
+                      최적화된 사용자 경험을 구현했습니다.
+                    </p>
+                  </div>
+                  
+                  <div class="project-card__tech">
+                    <span class="tech-tag tech-tag--html">HTML/CSS</span>
+                    <span class="tech-tag tech-tag--js">JavaScript</span>
+                    <span class="tech-tag tech-tag--responsive">Mobile First</span>
+                  </div>
+                  
                   <div class="project-card__actions">
                     <a
                       href="https://chbg90.github.io/Mobile/"
@@ -646,44 +701,80 @@
                       class="btn btn--primary btn--sm"
                       role="button"
                     >
+                      <span class="btn__icon">🔗</span>
                       라이브 데모
                       <span class="sr-only">(새 창에서 열림)</span>
                     </a>
+                    <button
+                      type="button"
+                      class="btn btn--warning btn--sm"
+                      data-modal="project2-planning"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="btn__icon">📋</span>
+                      기획서
+                    </button>
                   </div>
                 </div>
               </article>
 
               <!-- Project 3: 반응형 사이트 -->
               <article class="project-card" aria-labelledby="project3-title">
-                <div class="project-card__image">
+                <div class="project-card__image" style="cursor: pointer;" onclick="window.open('https://chbg90.github.io/respon/', '_blank')">
                   <img
                     src="./img/respon.jpg"
                     alt="영화의전당 리뉴얼 사이트 스크린샷"
                     loading="lazy"
                   />
                   <div class="project-card__overlay">
-                    <span
-                      class="project-card__type project-card__type--responsive"
-                      >반응형</span
-                    >
+                    <span class="project-card__type project-card__type--responsive">반응형</span>
+                    <div class="project-card__live-demo">🔗 라이브 데모 보기</div>
                   </div>
                 </div>
                 <div class="project-card__content">
-                  <h3 id="project3-title" class="project-card__title">
-                    영화의전당 리뉴얼 사이트
-                  </h3>
-                  <p class="project-card__desc">
-                    팀 프로젝트를 진행하면서 가장 중요하다고 느낀 것은
-                    소통이었습니다. 함께 진행하는 프로젝트인 만큼, 작은 부분
-                    하나도 공유하고 의견을 나누는 것이 프로젝트의 완성도와
-                    팀워크에 큰 영향을 미친다는걸 알게 되었습니다.
-                  </p>
-                  <div class="project-card__tech">
-                    <span class="tech-tag">HTML/CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">jQuery</span>
-                    <span class="tech-tag">Responsive</span>
+                  <div class="project-card__header">
+                    <h3 id="project3-title" class="project-card__title">
+                      영화의전당 리뉴얼 사이트
+                    </h3>
+                    <div class="project-card__period">팀 프로젝트 (4인)</div>
                   </div>
+                  
+                  <p class="project-card__desc">
+                    기존 영화의전당 사이트를 현대적인 디자인과 기능으로 리뉴얼한 반응형 웹사이트입니다.
+                  </p>
+                  
+                  <!-- 개발 성과 -->
+                  <div class="project-card__achievement">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">🎯</span>
+                      개발 성과
+                    </h4>
+                    <p>
+                      팀 프로젝트를 통해 Git 협업 워크플로우를 익히고, 
+                      반응형 웹 디자인 구현 경험을 쌓았습니다.
+                    </p>
+                  </div>
+                  
+                  <!-- 어려웠던 점 -->
+                  <div class="project-card__challenge">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">💡</span>
+                      어려웠던 점 & 배운 점
+                    </h4>
+                    <p>
+                      팀 프로젝트를 진행하면서 가장 중요하다고 느낀 것은 소통이었습니다. 
+                      함께 진행하는 프로젝트인 만큼, 작은 부분 하나도 공유하고 의견을 나누는 것이 
+                      프로젝트의 완성도와 팀워크에 큰 영향을 미친다는걸 알게 되었습니다.
+                    </p>
+                  </div>
+                  
+                  <div class="project-card__tech">
+                    <span class="tech-tag tech-tag--html">HTML/CSS</span>
+                    <span class="tech-tag tech-tag--js">JavaScript</span>
+                    <span class="tech-tag tech-tag--jquery">jQuery</span>
+                    <span class="tech-tag tech-tag--responsive">Responsive</span>
+                  </div>
+                  
                   <div class="project-card__actions">
                     <a
                       href="https://chbg90.github.io/Team/"
@@ -692,16 +783,27 @@
                       class="btn btn--primary btn--sm"
                       role="button"
                     >
+                      <span class="btn__icon">🔗</span>
                       라이브 데모
                       <span class="sr-only">(새 창에서 열림)</span>
                     </a>
                     <button
                       type="button"
-                      class="btn btn--outline btn--sm"
-                      data-modal="project3-detail"
+                      class="btn btn--warning btn--sm"
+                      data-modal="project3-planning"
                       aria-haspopup="dialog"
                     >
-                      자세히 보기
+                      <span class="btn__icon">📋</span>
+                      기획서
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn--info btn--sm"
+                      data-modal="project3-review"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="btn__icon">💻</span>
+                      코드리뷰
                     </button>
                   </div>
                 </div>
@@ -709,34 +811,62 @@
 
               <!-- Project 4: React 프로젝트 -->
               <article class="project-card" aria-labelledby="project4-title">
-                <div class="project-card__image">
+                <div class="project-card__image" style="cursor: pointer;" onclick="window.open('https://chbg90.github.io/portfolio/', '_blank')">
                   <img
                     src="./img/react.jpg"
                     alt="축제야 놀자 홈페이지 스크린샷"
                     loading="lazy"
                   />
                   <div class="project-card__overlay">
-                    <span class="project-card__type project-card__type--react"
-                      >React</span
-                    >
+                    <span class="project-card__type project-card__type--react">React</span>
+                    <div class="project-card__live-demo">🔗 라이브 데모 보기</div>
                   </div>
                 </div>
                 <div class="project-card__content">
-                  <h3 id="project4-title" class="project-card__title">
-                    축제야 놀자 홈페이지
-                  </h3>
-                  <p class="project-card__desc">
-                    React 프로젝트의 기본이라고 할 수 있는 Router 사용법과
-                    styled-components의 사용법을 익힐 수 있는 프로젝트였으며,
-                    이를 통해 컴포넌트 기반의 UI설계 및 페이지 간의 원활한 이동
-                    처리에 대한 이해도를 높일 수 있었습니다.
-                  </p>
-                  <div class="project-card__tech">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Redux Toolkit</span>
-                    <span class="tech-tag">Styled Components</span>
-                    <span class="tech-tag">React Router</span>
+                  <div class="project-card__header">
+                    <h3 id="project4-title" class="project-card__title">
+                      축제야 놀자 홈페이지
+                    </h3>
+                    <div class="project-card__period">개인 프로젝트</div>
                   </div>
+                  
+                  <p class="project-card__desc">
+                    전국 축제 정보를 제공하는 React 기반의 SPA(Single Page Application)입니다.
+                  </p>
+                  
+                  <!-- 개발 성과 -->
+                  <div class="project-card__achievement">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">🎯</span>
+                      개발 성과
+                    </h4>
+                    <p>
+                      React 프로젝트의 기본이라고 할 수 있는 Router 사용법과 
+                      styled-components의 사용법을 익힐 수 있는 프로젝트였으며, 
+                      이를 통해 컴포넌트 기반의 UI설계 및 페이지 간의 원활한 이동 
+                      처리에 대한 이해도를 높일 수 있었습니다.
+                    </p>
+                  </div>
+                  
+                  <!-- 어려웠던 점 -->
+                  <div class="project-card__challenge">
+                    <h4 class="project-card__section-title">
+                      <span class="project-card__icon">💡</span>
+                      어려웠던 점
+                    </h4>
+                    <p>
+                      상태 관리와 컴포넌트 간의 데이터 전달이 복잡했지만, 
+                      Redux Toolkit을 활용하여 전역 상태 관리를 효율적으로 구현했습니다.
+                    </p>
+                  </div>
+                  
+                  <div class="project-card__tech">
+                    <span class="tech-tag tech-tag--react">React</span>
+                    <span class="tech-tag tech-tag--redux">Redux Toolkit</span>
+                    <span class="tech-tag tech-tag--styled">Styled Components</span>
+                    <span class="tech-tag tech-tag--router">React Router</span>
+                  </div>
+                  
                   <div class="project-card__actions">
                     <a
                       href="https://chbg90.github.io/portfolio/"
@@ -745,16 +875,27 @@
                       class="btn btn--primary btn--sm"
                       role="button"
                     >
+                      <span class="btn__icon">🔗</span>
                       라이브 데모
                       <span class="sr-only">(새 창에서 열림)</span>
                     </a>
                     <button
                       type="button"
-                      class="btn btn--outline btn--sm"
-                      data-modal="project4-detail"
+                      class="btn btn--warning btn--sm"
+                      data-modal="project4-planning"
                       aria-haspopup="dialog"
                     >
-                      자세히 보기
+                      <span class="btn__icon">📋</span>
+                      기획서
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn--info btn--sm"
+                      data-modal="project4-review"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="btn__icon">💻</span>
+                      코드리뷰
                     </button>
                   </div>
                 </div>
@@ -925,6 +1066,261 @@
     <div class="skip-links" aria-label="빠른 네비게이션">
       <a href="#main-content" class="skip-link">본문으로 바로가기</a>
       <a href="#nav-menu" class="skip-link">메뉴로 바로가기</a>
+    </div>
+
+    <!-- 프로젝트 모달들 -->
+    <!-- Project 1 기획서 모달 -->
+    <div class="modal" id="project1-planning" aria-labelledby="modal1-planning-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal1-planning-title" class="modal__title">MoreShose 신발 쇼핑몰(PC 버전) 기획서</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">프로젝트 타겟</h3>
+            <p class="modal__text">10~30대 바쁜 현대인.<br>
+              여러 브랜드의 인기 제품을 한 페이지에서 간편하게 쇼핑할 수 있는
+              효율적이고 편리한 쇼핑 환경을 제공합니다.</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">아이템 선정 사유</h3>
+            <p class="modal__text">요즘 쇼핑 트렌드는 원하는 쇼핑품목의 브랜드를 각각 찾아보는게 아닌, 한 곳에서 한눈에 비교하고 구매하는 방식을 선호합니다.<br>
+              이러한 이유로 오프라인 멀티샵의 인기가 높아지고 있습니다.<br>
+              온라인 또한 마찬가지라 생각합니다.<br>
+              여러 브랜드의 정보를 한곳에서 제공함으로써 사용자의 니즈를 충족시킬 수 있다고 생각합니다.</p>
+            <div class="modal__image">
+              <img src="./img/001.jpg" alt="쇼핑 트렌드 분석" loading="lazy">
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">경쟁사 분석</h3>
+            <p class="modal__text">경쟁사 홈페이지를 분석 해보면 대부분 비슷한 구조를 가지고 있었습니다.<br>
+              어느한 곳 특별함 없이 비슷한 구조를 가지고 있다는 것은 사용자가 느끼기에 이 구조가 쇼핑을 하기에 제일 적절하다는 내용을 알려줍니다.</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용자 요구사항 분석</h3>
+            <p class="modal__text">여러 브랜드 중 트렌드가 되는 품목을 알고싶어 합니다.<br>
+              상품의 사용 용도에 맞게, 그리고 여러 브랜드의 정보를 한번에 얻고싶어 합니다.<br>
+              다른 사용자의 관심품목을 알고싶어 합니다.</p>
+            <div class="modal__image">
+              <img src="./img/002.jpg" alt="사용자 요구사항 분석" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 1 코드리뷰 모달 -->
+    <div class="modal" id="project1-review" aria-labelledby="modal1-review-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal1-review-title" class="modal__title">MoreShose 신발 쇼핑몰(PC 버전) 코드리뷰</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 스택</h3>
+            <p class="modal__text">#HTML/CSS | #JavaScript | #jQuery</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 라이브러리</h3>
+            <p class="modal__text">#Swiper | #Lodash | #ScrollTo</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">핵심 코드</h3>
+            <h4 class="modal__code-title">1. product page</h4>
+            <p class="modal__text">상품 데이터를 웹페이지에 렌더링하는 함수인 renderProduct()를 사용하여 코드의 재사용성과 구조화를 높였습니다.<br><br>
+              Lodash 라이브러리를 활용해 가격을 기준으로 오름차순 및 내림차순 정렬할 때도
+              renderProduct()를 호출하여 정렬된 데이터를 화면에 출력함으로써, 중복되는 DOM 생성 코드를 피하고 코드의 간결함을 유지했습니다.<br><br>
+              이 구조는 이후 필터 기능이나 검색 기능을 추가할 때도 productList만 가공한 뒤 renderProduct()를 다시 호출하면 되도록 설계되어 있어,
+              유지보수와 기능 확장에 유리합니다.</p>
+            <div class="modal__image">
+              <img src="./img/code1.png" alt="제품 페이지 코드" loading="lazy">
+            </div>
+            <h4 class="modal__code-title">2. join page</h4>
+            <p class="modal__text">이 코드는 회원가입 페이지에서 사용자 입력값을 실시간으로 검증하고,<br>
+              입력의 편의성을 높이며, 최종적으로는 올바른 데이터만 서버로 전달되도록 하는 코드입니다.<br><br>
+              유효성 검사를 통해 사용자 경험을 향상시켰습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 기획서 모달 -->
+    <div class="modal" id="project2-planning" aria-labelledby="modal2-planning-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal2-planning-title" class="modal__title">MoreShose 모바일 버전 기획서</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">프로젝트 개요</h3>
+            <p class="modal__text">PC 버전의 MoreShose를 모바일 환경에 최적화하여 터치 인터페이스와 작은 화면에 맞는 사용자 경험을 제공합니다.</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">모바일 최적화 요소</h3>
+            <p class="modal__text">
+              • 터치 친화적인 버튼 크기 (최소 44px)<br>
+              • 스와이프 제스처 지원<br>
+              • 모바일 우선 반응형 디자인<br>
+              • 빠른 로딩을 위한 이미지 최적화
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 기획서 모달 -->
+    <div class="modal" id="project3-planning" aria-labelledby="modal3-planning-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal3-planning-title" class="modal__title">영화의전당 리뉴얼 사이트(팀프로젝트) 기획서</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">프로젝트 타겟</h3>
+            <p class="modal__text">고정적인 수입이 있고 문화생활에 대한 높은 관심이 있으며 시간적인 여유가 있는 20~30대 직장인.</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">아이템 선정 사유</h3>
+            <p class="modal__text">팬데믹 이후 수년간 침체됐던 영화 산업이 2022년 6월 들어 회복세를 보이기 시작했습니다.<br>
+              이에 발맞춰, 영화의전당 홈페이지도 반응형으로 개편해 접근성과 사용성을 개선할 필요가 있었습니다.</p>
+            <div class="modal__image">
+              <img src="./img/01.png" alt="영화 산업 회복세 분석" loading="lazy">
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">자사 분석(영화의 전당)</h3>
+            <p class="modal__text">정보구조의 단순화 - 주제에 맞게 카테고리별로 하위 메뉴를 묶어서 정리할 필요가 있습니다.<br>
+              디자인의 변화 - 트렌드에 맞는 디자인을 도입하고 콘텐츠별 레이아웃의 불균형을 해소할 필요가 있습니다.</p>
+            <div class="modal__image">
+              <img src="./img/04.jpg" alt="기존 사이트 분석" loading="lazy">
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">경쟁사 분석(예술의 전당)</h3>
+            <p class="modal__text">메인 배너와 이미지를 활용하여 홈페이지 본연의 역할을 잘 수행하고 있었습니다.<br>
+              하지만 직관성이 떨어지는 메타포와 아이콘을 사용하고 있어 연령층이 높은 사용자에게 불편함을 줄 수 있다 생각했습니다.</p>
+            <div class="modal__image">
+              <img src="./img/02.jpg" alt="경쟁사 분석1" loading="lazy">
+              <img src="./img/03.jpg" alt="경쟁사 분석2" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 코드리뷰 모달 -->
+    <div class="modal" id="project3-review" aria-labelledby="modal3-review-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal3-review-title" class="modal__title">영화의전당 리뉴얼 사이트(팀프로젝트) 코드리뷰</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 스택</h3>
+            <p class="modal__text">#HTML/CSS | #JavaScript | #jQuery</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 라이브러리</h3>
+            <p class="modal__text">#Swiper | #Slick Slider</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">핵심 코드</h3>
+            <p class="modal__text">모바일 퍼스트 방식을 기반으로, 다양한 해상도에 따라 콘텐츠, 레이아웃, 스타일이 자연스럽게 반응하도록 구현하였습니다.</p>
+            <h4 class="modal__code-title">1. responsive code</h4>
+            <p class="modal__text">@media all and (min-width: 601px) 구간에서는 Flexbox의 column 방향 정렬을 활용하여 레이아웃을 구성하고, 
+              order 속성을 사용해 콘텐츠의 표시 순서를 조정하였습니다.</p>
+            <div class="modal__image">
+              <img src="./img/code4.png" alt="반응형 코드1" loading="lazy">
+            </div>
+            <h4 class="modal__code-title">2. responsive code</h4>
+            <p class="modal__text">@media all and (min-width: 769px) 구간에서는 모바일 메뉴를 display: none으로 숨기고, 
+              PC 전용 메뉴를 display: block으로 활성화하여 화면 크기에 따라 서로 다른 메뉴 구성을 적용하였습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 기획서 모달 -->
+    <div class="modal" id="project4-planning" aria-labelledby="modal4-planning-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal4-planning-title" class="modal__title">축제야 놀자 React 프로젝트 기획서</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">프로젝트 개요</h3>
+            <p class="modal__text">전국 축제 정보를 제공하는 React 기반의 SPA(Single Page Application)로, 
+              사용자가 지역별, 시기별로 축제 정보를 쉽게 찾을 수 있도록 구성했습니다.</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">주요 기능</h3>
+            <p class="modal__text">
+              • 지역별 축제 검색<br>
+              • 날짜별 축제 필터링<br>
+              • 즐겨찾기 기능<br>
+              • 반응형 디자인<br>
+              • 상태 관리 (Redux Toolkit)
+            </p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">기술적 도전</h3>
+            <p class="modal__text">React Router를 활용한 SPA 구현과 Redux Toolkit을 통한 전역 상태 관리, 
+              styled-components를 이용한 컴포넌트 스타일링에 중점을 두었습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 코드리뷰 모달 -->
+    <div class="modal" id="project4-review" aria-labelledby="modal4-review-title" role="dialog" aria-modal="true">
+      <div class="modal__overlay" role="button" aria-label="모달 닫기"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 id="modal4-review-title" class="modal__title">축제야 놀자 React 프로젝트 코드리뷰</h2>
+          <button class="modal__close" aria-label="모달 닫기">&times;</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 스택</h3>
+            <p class="modal__text">#React | #Redux Toolkit | #styled-components | #React Bootstrap</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">사용 라이브러리</h3>
+            <p class="modal__text">#Slick Slider</p>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">핵심 코드</h3>
+            <h4 class="modal__code-title">1. redux</h4>
+            <p class="modal__text">Redux Toolkit의 createSlice를 사용하여 장바구니(cart) 상태 관리 기능을 구현했습니다.<br><br>
+              상품 추가, 삭제, 수량 증가/감소 등의 기능을 reducer로 구성했으며,
+              findIndex를 활용해 해당 상품의 존재 여부를 확인한 후 상태를 효율적으로 업데이트하도록 구현했습니다.</p>
+            <div class="modal__image">
+              <img src="./img/code6.png" alt="Redux 코드" loading="lazy">
+            </div>
+            <h4 class="modal__code-title">2. styled-components</h4>
+            <p class="modal__text">이 프로젝트에서는 스타일드 컴포넌트를 사용해 컴포넌트 단위로 스타일을 분리하고 재사용성을 높였습니다.<br><br>
+              현재 보여지는 코드에서 Wrap, Gnb, Flex 등의 요소는 Flexbox와 여백을 활용해 레이아웃 정렬을 구현했고,
+              StyledLink, HealLink는 React Router와 연동하여 활성화 상태에 따라 스타일이 변경되도록 처리했습니다.<br><br>
+              이미지 및 텍스트 스타일도 통일감 있게 설정하여 UI의 일관성을 유지했습니다.</p>
+            <div class="modal__image">
+              <img src="./img/code7.png" alt="Styled Components 코드" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
