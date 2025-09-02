@@ -172,6 +172,132 @@ section {
   }
 }
 
+// ============================================================================
+// 블로그 섹션 스타일
+// ============================================================================
+
+.blog {
+  background: linear-gradient(135deg, $neutral-50, $neutral-100);
+  padding: $spacing-20 0;
+  
+  @include respond-to('desktop') {
+    padding: $spacing-24 0;
+  }
+}
+
+.blog__container {
+  @include container(1200px);
+}
+
+.blog__grid {
+  display: grid;
+  gap: $spacing-8;
+  margin: $spacing-12 0;
+  
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-10;
+  }
+}
+
+.blog-card {
+  background: $neutral-0;
+  border-radius: $border-radius-2xl;
+  padding: $spacing-6;
+  border: 1px solid $neutral-200;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.1),
+      0 0 30px rgba($primary-500, 0.05);
+    border-color: $primary-300;
+  }
+  
+  @include respond-to('tablet') {
+    padding: $spacing-8;
+  }
+}
+
+.blog-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-4;
+}
+
+.blog-card__date {
+  font-size: $font-size-sm;
+  color: $neutral-500;
+  font-weight: $font-weight-medium;
+}
+
+.blog-card__category {
+  background: $primary-100;
+  color: $primary-700;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-card__content {
+  margin-bottom: $spacing-6;
+}
+
+.blog-card__title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $neutral-900;
+  margin-bottom: $spacing-3;
+  line-height: $line-height-tight;
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-2xl;
+  }
+}
+
+.blog-card__excerpt {
+  color: $neutral-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+}
+
+.blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+}
+
+.blog-tag {
+  background: $neutral-100;
+  color: $neutral-700;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-md;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.blog-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blog__footer {
+  text-align: center;
+  margin-top: $spacing-12;
+  padding-top: $spacing-8;
+  border-top: 1px solid $neutral-200;
+}
+
 // 푸터 기본 스타일
 .footer {
   background-color: $neutral-900;

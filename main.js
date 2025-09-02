@@ -469,6 +469,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             });
             
+            // Blog섹션のアニメーション
+            gsap.utils.toArray('.blog-card').forEach((card, index) => {
+                gsap.fromTo(card, 
+                    {
+                        opacity: 0,
+                        y: 50
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        delay: index * 0.1,
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
             // セクションタイトルのアニメーション
             gsap.utils.toArray('.section-title').forEach(title => {
                 gsap.fromTo(title,
